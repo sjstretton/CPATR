@@ -1,0 +1,31 @@
+﻿Superscenario Number,Country,Short Name,Long Name,Policy,Phase In,Starting C-tax Rate,Max Rate,Reached When,Trajectory,Escalation Rate,Type of Renewable Costs,Labor tax reductions,Corporate taxes,Public capital investment,Current spending,Cash transfers:,   - targeted percentile,   - coverage rate,   - leakage rate,_GDP_Scenario,_IntEnerPricForeSource,_EffTaxOutsideBaseline
+1,China,China0,China0,Carbon tax,2021,0,0,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+2,Brazil,Brazil0,Brazil0,Carbon tax,2021,0,0,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+3,United States,United States0,United States0,Carbon tax,2021,0,0,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+4,South Africa,South Africa0,South Africa0,Carbon tax,2021,0,0,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+5,India,India0,India0,Carbon tax,2021,0,0,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+6,Japan,Japan0,Japan0,Carbon tax,2021,0,0,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+7,China,China25,China25,Carbon tax,2021,25,25,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+8,Brazil,Brazil25,Brazil25,Carbon tax,2021,25,25,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+9,United States,United States25,United States25,Carbon tax,2021,25,25,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+10,South Africa,South Africa25,South Africa25,Carbon tax,2021,25,25,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+11,India,India25,India25,Carbon tax,2021,25,25,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+12,Japan,Japan25,Japan25,Carbon tax,2021,25,25,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+13,China,China50,China50,Carbon tax,2021,50,50,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+14,Brazil,Brazil50,Brazil50,Carbon tax,2021,50,50,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+15,United States,United States50,United States50,Carbon tax,2021,50,50,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+16,South Africa,South Africa50,South Africa50,Carbon tax,2021,50,50,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+17,India,India50,India50,Carbon tax,2021,50,50,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+18,Japan,Japan50,Japan50,Carbon tax,2021,50,50,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+19,China,China75,China75,Carbon tax,2021,75,75,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+20,Brazil,Brazil75,Brazil75,Carbon tax,2021,75,75,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+21,United States,United States75,United States75,Carbon tax,2021,75,75,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+22,South Africa,South Africa75,South Africa75,Carbon tax,2021,75,75,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+23,India,India75,India75,Carbon tax,2021,75,75,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+24,Japan,Japan75,Japan75,Carbon tax,2021,75,75,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+25,China,China100,China100,Carbon tax,2021,100,100,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+26,Brazil,Brazil100,Brazil100,Carbon tax,2021,100,100,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+27,United States,United States100,United States100,Carbon tax,2021,100,100,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+28,South Africa,South Africa100,South Africa100,Carbon tax,2021,100,100,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+29,India,India100,India100,Carbon tax,2021,100,100,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No
+30,Japan,Japan100,Japan100,Carbon tax,2021,100,100,2022,Linear,0.00,New,0,0,0,0,0,0,0,0,WEO2020,Manual,No

@@ -1,0 +1,124 @@
+﻿Country,CountryCode,Technology,Code,Date,Scenario,LCOE ($/MWh),CAPEX ($m/MW),Capacity factor (%),"Thermal Efficiency (%, HHV)",Fixed opex ($/MW/yr),Varliable opex ($/MWh),Debt ratio (%),Cost of debt (bps),Cost of equity (%)
+Australia ,AUS,sol,AUS.sol,2019,Mid,49,0.78,0.2,,12646,,0.7,475,0.1
+Australia ,AUS,wnd,AUS.wnd,2019,Mid,52,1.48,0.39,,20019,5.9,0.7,475,0.1
+Australia ,AUS,nga,AUS.nga,2019,Mid,83,1.06,0.5,0.5,7377,4.4,0.5,485,0.13
+Australia ,AUS,coa,AUS.coa,2019,Mid,130,1.98,0.6,0.38,32552,2.2,0.4,526,0.18
+China,CHN,sol,CHN.sol,2019,Mid,53,0.68,0.16,,6795,,0.7,600,0.09
+China,CHN,wnd,CHN.wnd,2019,Mid,50,1.07,0.28,,12886,7.4,0.8,490,0.09
+China,CHN,bio,CHN.bio,2019,Mid,66,1.36,0.63,,10565,12.1,0.7,600,0.08
+China,CHN,nuc,CHN.nuc,2019,Mid,68,2.56,0.85,0.33,100028,6.6,0.7,528,0.08
+China,CHN,coa,CHN.coa,2019,Mid,63,0.57,0.5,0.39,17456,3.2,0.8,490,0.09
+China,CHN,nga,CHN.nga,2019,Mid,101,0.45,0.3,0.41,17288,5,0.8,490,0.09
+Germany ,DEU,wnd,DEU.wnd,2019,Mid,53,1.67,0.29,,28008,5.7,0.75,200,0.04
+Germany ,DEU,sol,DEU.sol,2019,Mid,57,0.77,0.11,,11903,,0.8,175,0.05
+Germany ,DEU,nga,DEU.nga,2019,Mid,88,1.02,0.55,0.54,22904,3.4,0.56,367,0.1
+India,IND,sol,IND.sol,2019,Mid,37,0.48,0.19,,6270,,0.8,1000,0.12
+India,IND,wnd,IND.wnd,2019,Mid,43,0.87,0.31,,9753,,0.75,1000,0.13
+India,IND,coa,IND.coa,2019,Mid,62,0.95,0.65,0.4,17060,1.7,0.7,1265,0.14
+India,IND,nga,IND.nga,2019,Mid,94,0.68,0.4,0.46,41336,1.1,0.7,1265,0.14
+Japan ,JPN,sol,JPN.sol,2019,Mid,117,1.55,0.15,,41336,,0.85,200,0.07
+Japan ,JPN,wnd,JPN.wnd,2019,Mid,105,2.72,0.27,,41799,4.6,0.85,207,0.07
+Japan ,JPN,coa,JPN.coa,2019,Mid,70,2.06,0.75,0.41,74031,4.8,0.75,267,0.1
+Japan ,JPN,nga,JPN.nga,2019,Mid,92,1.34,0.75,0.49,22263,2.3,0.75,267,0.1
+Japan ,JPN,bio,JPN.bio,2019,Mid,121,4.15,0.87,,249673,11.9,0.8,230,0.07
+United Kingdom ,GBR,wnd,GBR.wnd,2019,Mid,65,1.69,0.31,,23757,7,0.66,400,0.08
+United Kingdom ,GBR,sol,GBR.sol,2019,Mid,78,0.87,0.11,,11363,,0.8,350,0.08
+United Kingdom ,GBR,nga,GBR.nga,2019,Mid,81,0.99,0.7,0.54,30783,3.7,0.61,496,0.1
+United Kingdom ,GBR,bio,GBR.bio,2019,Mid,126,3.5,0.88,,228068,2.7,0.7,446,0.12
+United Kingdom ,GBR,nuc,GBR.nuc,2019,Mid,213,10.34,0.9,0.33,130226,4,0,,0.09
+United States,USA,wnd,USA.wnd,2019,Mid,38,1.4,0.42,,30000,,0.7,430,0.09
+United States,USA,sol,USA.sol,2019,Mid,55,1.03,0.18,,13788,,0.7,430,0.07
+United States,USA,hyd,USA.hyd,2019,Mid,48,3.03,0.75,,36773,1.4,0.65,439,0.1
+United States,USA,nga,USA.nga,2019,Mid,48,0.94,0.55,0.49,13600,2.5,0.65,400,0.09
+United States,USA,coa,USA.coa,2019,Mid,94,2.33,0.45,0.34,50000,5,0.65,449,0.09
+United States,USA,nuc,USA.nuc,2019,Mid,229,10.79,0.92,0.33,102336,3,0.5,509,0.09
+Argentina ,ARG,wnd,ARG.wnd,2019,Mid,57,1.54,0.47,,30000,,0.55,950,0.12
+Argentina ,ARG,sol,ARG.sol,2019,Mid,117,1.1,0.19,,17000,,0,1140,0.15
+Belarus,BLR,nuc,BLR.nuc,2019,Mid,157,5.59,0.91,0.33,121364,3.7,0.91,400,0.15
+Brazil ,BRA,wnd,BRA.wnd,2019,Mid,37,1.11,0.52,,17129,3.5,0.7,1100,0.13
+Brazil ,BRA,sol,BRA.sol,2019,Mid,69,0.92,0.22,,13967,,0.8,1100,0.13
+Brazil ,BRA,nga,BRA.nga,2019,Mid,65,0.86,0.75,0.5,20585,3.1,0.7,1050,0.13
+Canada,CAN,wnd,CAN.wnd,2019,Mid,41,1.55,0.42,,29281,,0.7,400,0.09
+Canada,CAN,sol,CAN.sol,2019,Mid,54,0.84,0.16,,14057,,0.7,415,0.07
+Canada,CAN,nga,CAN.nga,2019,Mid,69,0.94,0.55,0.49,35586,2.3,0.65,433,0.09
+Canada,CAN,hyd,CAN.hyd,2019,Mid,127,6.82,0.53,,12395,,0.65,433,0.09
+Chile,CHL,sol,CHL.sol,2019,Mid,53,1.05,0.24,,17500,,0.7,588,0.09
+Chile,CHL,wnd,CHL.wnd,2019,Mid,51,1.81,0.4,,26000,,0.7,588,0.09
+Chile,CHL,nga,CHL.nga,2019,Mid,66,1.04,0.7,0.48,24585,2.5,0.7,588,0.09
+Chile,CHL,coa,CHL.coa,2019,Mid,72,3.05,0.8,0.34,36000,3,0.7,588,0.09
+Denmark,DNK,wnd,DNK.wnd,2019,Mid,57,1.79,0.35,,21925,5.7,0.65,400,0.07
+Dominican Republic,DOM,wnd,DOM.wnd,2019,Mid,82,2.2,0.4,,30000,,0.7,875,0.11
+Dominican Republic,DOM,sol,DOM.sol,2019,Mid,89,1.15,0.19,,21000,,0.7,900,0.09
+Ecuador ,ECU,sol,ECU.sol,2019,Mid,93,1.13,0.16,,20000,,0.65,588,0.1
+El Salvador ,SLV,sol,SLV.sol,2019,Mid,91,1.15,0.2,,24000,,0.7,925,0.1
+Finland,FIN,bio,FIN.bio,2019,Mid,63,1.26,0.78,,65518,0.8,0.7,386,0.11
+Finland,FIN,nuc,FIN.nuc,2019,Mid,235,7.61,0.9,0.33,131258,4,0.74,605,0.1
+France,FRA,sol,FRA.sol,2019,Mid,51,0.83,0.14,,11903,,0.8,200,0.06
+France,FRA,wnd,FRA.wnd,2019,Mid,64,1.6,0.29,,22859,6.9,0.66,250,0.07
+France,FRA,nga,FRA.nga,2019,Mid,82,0.95,0.61,0.54,21238,3.2,0.59,432,0.1
+France,FRA,nuc,FRA.nuc,2019,Mid,337,9.42,0.91,0.33,135836,3.4,0,,0.1
+Greece,GRC,coa ,GRC.coa ,2019,Mid,150,2.7,0.75,0.36,57756,2.2,0.57,428,0.11
+Guatemala,GTM,sol,GTM.sol,2019,Mid,82,1.1,0.2,,24000,,0.7,690,0.1
+Indonesia,IDN,sol,IDN.sol,2019,Mid,106,1.02,0.16,,18206,,0.7,1050,0.12
+Indonesia,IDN,wnd,IDN.wnd,2019,Mid,120,1.85,0.23,,19669,,0.7,850,0.12
+Indonesia,IDN,coa,IDN.coa,2019,Mid,71,1.33,0.51,0.36,14367,5.3,0.75,850,0.1
+Indonesia,IDN,nga,IDN.nga,2019,Mid,95,0.85,0.5,0.48,26904,2.1,0.75,1050,0.1
+Indonesia,IDN,bio,IDN.bio,2019,Mid,160,3.18,0.72,,67607,10.6,0.75,850,0.12
+Israel ,ISR,sol,ISR.sol,2019,Mid,51,0.85,0.19,,18281,,0.8,350,0.1
+Italy ,ITA,sol,ITA.sol,2019,Mid,59,0.83,0.16,,11903,,0.7,250,0.08
+Italy ,ITA,wnd,ITA.wnd,2019,Mid,60,1.6,0.32,,25087,5.7,0.65,375,0.08
+Jordan ,JOR,nga,JOR.nga,2019,Mid,89,1,0.75,0.5,21344,3.2,0.72,649,0.14
+Malaysia,MYS,sol,MYS.sol,2019,Mid,92,1.09,0.16,,15385,,0.75,650,0.1
+Malaysia,MYS,coa,MYS.coa,2019,Mid,66,1.63,0.74,0.38,14711,4.9,0.75,600,0.1
+Malaysia,MYS,nga,MYS.nga,2019,Mid,91,0.89,0.4,0.48,27068,2.5,0.75,600,0.1
+Malaysia,MYS,bio,MYS.bio,2019,Mid,152,3.06,0.72,,60704,9.4,0.75,650,0.1
+Mexico,MEX,wnd,MEX.wnd,2019,Mid,48,1.51,0.45,,24116,,0.7,840,0.1
+Mexico,MEX,sol,MEX.sol,2019,Mid,61,0.9,0.21,,18551,,0.7,640,0.09
+Mexico,MEX,nga,MEX.nga,2019,Mid,54,0.65,0.75,0.48,14244,11.2,0.7,840,0.1
+Netherlands,NLD,wnd,NLD.wnd,2019,Mid,60,1.64,0.3,,25707,6.9,0.7,250,0.07
+Panama,PAN,wnd,PAN.wnd,2019,Mid,70,1.99,0.38,,28000,,0.7,700,0.1
+Peru ,PER,wnd,PER.wnd,2019,Mid,52,1.81,0.4,,26000,,0.7,460,0.09
+Peru ,PER,sol,PER.sol,2019,Mid,57,0.99,0.23,,20000,,0.7,588,0.09
+Philippines,PHL,sol,PHL.sol,2019,Mid,88,0.99,0.16,,17529,,0.75,750,0.1
+Philippines,PHL,coa,PHL.coa,2019,Mid,72,1.47,0.65,0.36,15069,5.6,0.75,600,0.1
+Philippines,PHL,nga,PHL.nga,2019,Mid,93,1.11,0.75,0.48,37099,2.2,0.75,600,0.1
+Philippines,PHL,bio,PHL.bio,2019,Mid,162,3.46,0.72,,72847,11.5,0.7,750,0.1
+Poland ,POL,wnd,POL.wnd,2019,Mid,68,1.82,0.29,,29402,7,0.7,400,0.07
+Poland ,POL,coa,POL.coa,2019,Mid,103,2.09,0.85,0.33,60043,3.7,0,,0.1
+South Africa,ZAF,sol,ZAF.sol,2019,Mid,62,0.89,0.21,,15399,,0.8,1200,0.14
+South Africa,ZAF,wnd,ZAF.wnd,2019,Mid,79,1.77,0.35,,25033,6.2,0.8,1100,0.15
+South Korea ,ZAF,wnd,ZAF.wnd,2019,Mid,120,2.21,0.25,,67818,,0.85,380,0.07
+South Korea ,ZAF,sol,ZAF.sol,2019,Mid,124,1.59,0.15,,34476,,0.85,450,0.07
+South Korea ,ZAF,coa,ZAF.coa,2019,Mid,59,1.74,0.8,0.42,22383,2.1,0.8,420,0.07
+South Korea ,ZAF,nga,ZAF.nga,2019,Mid,90,0.99,0.65,0.5,21125,2.5,0.75,390,0.07
+Spain ,ESP,wnd,ESP.wnd,2019,Mid,51,1.51,0.32,,26007,,0.65,400,0.07
+Spain ,ESP,sol,ESP.sol,2019,Mid,49,0.82,0.19,,11903,,0.65,250,0.08
+Spain ,ESP,bio,ESP.bio,2019,Mid,97,2.48,0.85,,186228,2.2,0.7,329,0.1
+Sweden ,SWE,wnd,SWE.wnd,2019,Mid,40,1.27,0.37,,22526,6.7,0.65,350,0.06
+Thailand ,THA,sol,THA.sol,2019,Mid,88,1.02,0.16,,19171,,0.75,550,0.1
+Thailand ,THA,wnd,THA.wnd,2019,Mid,121,1.8,0.2,,32638,,0.75,550,0.1
+Thailand ,THA,coa,THA.coa,2019,Mid,79,1.67,0.65,0.36,19523,7.1,0.75,550,0.1
+Thailand ,THA,nga,THA.nga,2019,Mid,92,0.96,0.65,0.48,35765,2.9,0.75,550,0.1
+Thailand ,THA,bio,THA.bio,2019,Mid,166,3.46,0.72,,75860,12,0.75,550,0.1
+Turkey ,TUR,wnd,TUR.wnd,2019,Mid,68,1.88,0.31,,21800,,0.65,550,0.09
+Turkey ,TUR,sol,TUR.sol,2019,Mid,77,0.9,0.17,,13000,,0.7,436,0.12
+Turkey ,TUR,coa,TUR.coa,2019,Mid,66,1.36,0.75,0.42,36045,1.4,0.61,775,0.13
+Turkey ,TUR,coa,TUR.coa,2019,Mid,81,1.54,0.83,0.52,30530,4.6,0.67,445,0.11
+Turkey ,TUR,nuc,TUR.nuc,2019,Mid,168,7.01,0.9,0.33,146636,4.5,0.8,,0.1
+United Arab Emirates,ARE,sol,ARE.sol,2019,Mid,51,0.87,0.19,,18633,,0.7,475,0.1
+United Arab Emirates,ARE,nga,ARE.nga,2019,Mid,65,1.11,0.75,0.54,10172,3,0.7,550,0.12
+United Arab Emirates,ARE,nuc,ARE.nuc,2019,Mid,90,4.69,0.91,0.33,104374,3.2,0.8,339,0.11
+Uruguay,URY,sol,URY.sol,2019,Mid,96,0.99,0.2,,17500,,0.7,1100,0.15
+Vietnam,VNM,sol,VNM.sol,2019,Mid,94,1.01,0.16,,19290,,0.7,900,0.12
+Vietnam,VNM,wnd,VNM.wnd,2019,Mid,91,1.78,0.29,,20255,5.4,0.7,900,0.12
+Vietnam,VNM,coa,VNM.coa,2019,Mid,75,1.35,0.6,0.36,16053,5.9,0.75,900,0.12
+Vietnam,VNM,nga,VNM.nga,2019,Mid,91,1.06,0.6,0.48,36199,2.4,0.75,900,0.12
+Vietnam,VNM,bio,VNM.bio,2019,Mid,162,3.46,0.72,,74514,11.7,0.7,900,0.12
+World,WLD,bio,WLD.bio,2019,Mid,126,3.5,0.88,,228068,2.7,0.7,446,0.12
+World,WLD,wnd,WLD.wnd,2019,Mid,38,1.4,0.42,,30000,,0.7,430,0.09
+World,WLD,sol,WLD.sol,2019,Mid,55,1.03,0.18,,13788,,0.7,430,0.07
+World,WLD,hyd,WLD.hyd,2019,Mid,48,3.03,0.75,,36773,1.4,0.65,439,0.1
+World,WLD,nga,WLD.nga,2019,Mid,48,0.94,0.55,0.49,13600,2.5,0.65,400,0.09
+World,WLD,oil,WLD.oil,2019,Mid,120,2.33,0.45,0.34,50000,5,0.65,449,0.09
+World,WLD,coa,WLD.coa,2019,Mid,94,2.33,0.45,0.34,50000,5,0.65,449,0.09
+World,WLD,nuc,WLD.nuc,2019,Mid,229,10.79,0.92,0.33,102336,3,0.5,509,0.09

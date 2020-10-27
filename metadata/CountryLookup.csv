@@ -1,0 +1,289 @@
+﻿CountryCode,Type,IncomeGroupSymbol,CountryIncluded,CountryName,Region,Enerdata MACC Name,TwoLetterCountryCode
+AFG,Country,LIC,T,Afghanistan,South Asia,,AF
+ALB,Country,UMIC,T,Albania,Europe & Central Asia,,AL
+DZA,Country,UMIC,T,Algeria,Middle East & North Africa,,DZ
+ASM,Country,UMIC,T,American Samoa,East Asia & Pacific,,AS
+AND,Country,HIC,F,Andorra,Europe & Central Asia,,AD
+AGO,Country,LMIC,F,Angola,Sub-Saharan Africa,,AO
+ATG,Country,HIC,F,Antigua and Barbuda,Latin America & Caribbean,,AG
+ARG,Country,HIC,F,Argentina,Latin America & Caribbean,Argentina,AR
+ARM,Country,UMIC,T,Armenia,Europe & Central Asia,,AM
+ABW,Country,HIC,F,Aruba,Latin America & Caribbean,,AW
+AUS,Country,HIC,F,Australia,East Asia & Pacific,Australia,AU
+AUT,Country,HIC,F,Austria,Europe & Central Asia,Austria,AT
+AZE,Country,UMIC,T,Azerbaijan,Europe & Central Asia,,AZ
+BHS,Country,HIC,F,"Bahamas, The",Latin America & Caribbean,,BS
+BHR,Country,HIC,F,Bahrain,Middle East & North Africa,,BH
+BGD,Country,LMIC,F,Bangladesh,South Asia,,BD
+BRB,Country,HIC,F,Barbados,Latin America & Caribbean,,BB
+BLR,Country,UMIC,T,Belarus,Europe & Central Asia,,BY
+BEL,Country,HIC,F,Belgium,Europe & Central Asia,Belgium,BE
+BLZ,Country,UMIC,T,Belize,Latin America & Caribbean,,BZ
+BEN,Country,LIC,T,Benin,Sub-Saharan Africa,,BJ
+BMU,Country,HIC,F,Bermuda,North America,,BM
+BTN,Country,LMIC,F,Bhutan,South Asia,,BT
+BOL,Country,LMIC,F,Bolivia,Latin America & Caribbean,,BO
+BIH,Country,UMIC,T,Bosnia and Herzegovina,Europe & Central Asia,,BA
+BWA,Country,UMIC,T,Botswana,Sub-Saharan Africa,,BW
+BRA,Country,UMIC,T,Brazil,Latin America & Caribbean,Brazil,BR
+VGB,Country,HIC,F,British Virgin Islands,Latin America & Caribbean,,VG
+BRN,Country,HIC,F,Brunei Darussalam,East Asia & Pacific,,BN
+BGR,Country,UMIC,T,Bulgaria,Europe & Central Asia,Bulgaria,BG
+BFA,Country,LIC,T,Burkina Faso,Sub-Saharan Africa,,BF
+BDI,Country,LIC,T,Burundi,Sub-Saharan Africa,,BI
+CPV,Country,LMIC,F,Cabo Verde,Sub-Saharan Africa,,CV
+KHM,Country,LMIC,F,Cambodia,East Asia & Pacific,,KH
+CMR,Country,LMIC,F,Cameroon,Sub-Saharan Africa,,CM
+CAN,Country,HIC,F,Canada,North America,Canada,CA
+CYM,Country,HIC,F,Cayman Islands,Latin America & Caribbean,,KY
+CAF,Country,LIC,T,Central African Republic,Sub-Saharan Africa,,CF
+TCD,Country,LIC,T,Chad,Sub-Saharan Africa,,TD
+CHI,Country,HIC,F,Channel Islands,Europe & Central Asia,,
+CHL,Country,HIC,F,Chile,Latin America & Caribbean,Chile,CL
+CHN,Country,UMIC,T,China,East Asia & Pacific,China,CN
+COL,Country,UMIC,T,Colombia,Latin America & Caribbean,,CO
+COM,Country,LIC,T,Comoros,Sub-Saharan Africa,,KM
+COD,Country,LIC,T,"Congo, Democratic Republic of the",Sub-Saharan Africa,,CD
+COG,Country,LMIC,F,"Congo, Republic of",Sub-Saharan Africa,,CG
+CRI,Country,UMIC,T,Costa Rica,Latin America & Caribbean,,CR
+CIV,Country,LMIC,F,Côte d'Ivoire,Sub-Saharan Africa,,CI
+HRV,Country,HIC,F,Croatia,Europe & Central Asia,Croatia,HR
+CUB,Country,UMIC,T,Cuba,Latin America & Caribbean,,CU
+CUW,Country,HIC,F,Curaçao,Latin America & Caribbean,,CW
+CYP,Country,HIC,F,Cyprus,Europe & Central Asia,,CY
+CZE,Country,HIC,F,Czech Republic,Europe & Central Asia,Czech Rep.,CZ
+DNK,Country,HIC,F,Denmark,Europe & Central Asia,Denmark,DK
+DJI,Country,LMIC,F,Djibouti,Middle East & North Africa,,DJ
+DMA,Country,UMIC,T,Dominica,Latin America & Caribbean,,DM
+DOM,Country,UMIC,T,Dominican Republic,Latin America & Caribbean,,DO
+ECU,Country,UMIC,T,Ecuador,Latin America & Caribbean,,EC
+EGY,Country,LMIC,F,Egypt,Middle East & North Africa,Egypt,EG
+SLV,Country,LMIC,F,El Salvador,Latin America & Caribbean,,SV
+GNQ,Country,UMIC,T,Equatorial Guinea,Sub-Saharan Africa,,GQ
+ERI,Country,LIC,T,Eritrea,Sub-Saharan Africa,,ER
+EST,Country,HIC,F,Estonia,Europe & Central Asia,,EE
+SWZ,Country,LMIC,F,Eswatini,Sub-Saharan Africa,,SZ
+ETH,Country,LIC,T,Ethiopia,Sub-Saharan Africa,,ET
+FRO,Country,HIC,F,Faroe Islands,Europe & Central Asia,,FO
+FJI,Country,UMIC,T,Fiji,East Asia & Pacific,,FJ
+FIN,Country,HIC,F,Finland,Europe & Central Asia,Finland,FI
+FRA,Country,HIC,F,France,Europe & Central Asia,France,FR
+PYF,Country,HIC,F,French Polynesia,East Asia & Pacific,,PF
+GAB,Country,UMIC,T,Gabon,Sub-Saharan Africa,,GA
+GMB,Country,LIC,T,"Gambia, The",Sub-Saharan Africa,,GM
+GEO,Country,LMIC,F,Georgia,Europe & Central Asia,,GE
+DEU,Country,HIC,F,Germany,Europe & Central Asia,Germany,DE
+GHA,Country,LMIC,F,Ghana,Sub-Saharan Africa,,GH
+GIB,Country,HIC,F,Gibraltar,Europe & Central Asia,,GI
+GRC,Country,HIC,F,Greece,Europe & Central Asia,Greece,GR
+GRL,Country,HIC,F,Greenland,Europe & Central Asia,,GL
+GRD,Country,UMIC,T,Grenada,Latin America & Caribbean,,GD
+GUM,Country,HIC,F,Guam,East Asia & Pacific,,GU
+GTM,Country,UMIC,T,Guatemala,Latin America & Caribbean,,GT
+GIN,Country,LIC,T,Guinea,Sub-Saharan Africa,,GN
+GNB,Country,LIC,T,Guinea-Bissau,Sub-Saharan Africa,,GW
+GUY,Country,UMIC,T,Guyana,Latin America & Caribbean,,GY
+HTI,Country,LIC,T,Haiti,Latin America & Caribbean,,HT
+HND,Country,LMIC,F,Honduras,Latin America & Caribbean,,HN
+HKG,Country,HIC,F,Hong Kong SAR,East Asia & Pacific,,HK
+HUN,Country,HIC,F,Hungary,Europe & Central Asia,Hungary,HU
+ISL,Country,HIC,F,Iceland,Europe & Central Asia,,IS
+IND,Country,LMIC,F,India,South Asia,India,IN
+IDN,Country,LMIC,F,Indonesia,East Asia & Pacific,Indonesia,ID
+IRN,Country,UMIC,T,Iran,Middle East & North Africa,,IR
+IRQ,Country,UMIC,T,Iraq,Middle East & North Africa,,IQ
+IRL,Country,HIC,F,Ireland,Europe & Central Asia,Ireland,IE
+IMN,Country,HIC,F,Isle of Man,Europe & Central Asia,,IM
+ISR,Country,HIC,F,Israel,Middle East & North Africa,,IL
+ITA,Country,HIC,F,Italy,Europe & Central Asia,Italy,IT
+JAM,Country,UMIC,T,Jamaica,Latin America & Caribbean,,JM
+JPN,Country,HIC,F,Japan,East Asia & Pacific,Japan,JP
+JOR,Country,UMIC,T,Jordan,Middle East & North Africa,,JO
+KAZ,Country,UMIC,T,Kazakhstan,Europe & Central Asia,,KZ
+KEN,Country,LMIC,F,Kenya,Sub-Saharan Africa,,KE
+KIR,Country,LMIC,F,Kiribati,East Asia & Pacific,,KI
+KOR,Country,HIC,F,Korea,East Asia & Pacific,South Korea,KP
+PRK,Country,LIC,T,"Korea, Dem. People's Rep.",East Asia & Pacific,,KR
+XKX,Country,LMIC,F,Kosovo,Europe & Central Asia,,XK
+KWT,Country,HIC,F,Kuwait,Middle East & North Africa,,KW
+KGZ,Country,LMIC,F,Kyrgyz Republic,Europe & Central Asia,,KG
+LAO,Country,LMIC,F,Lao P.D.R.,East Asia & Pacific,,LA
+LVA,Country,HIC,F,Latvia,Europe & Central Asia,,LV
+LBN,Country,UMIC,T,Lebanon,Middle East & North Africa,,LB
+LSO,Country,LMIC,F,Lesotho,Sub-Saharan Africa,,LS
+LBR,Country,LIC,T,Liberia,Sub-Saharan Africa,,LR
+LBY,Country,UMIC,T,Libya,Middle East & North Africa,,LY
+LIE,Country,HIC,F,Liechtenstein,Europe & Central Asia,,LI
+LTU,Country,HIC,F,Lithuania,Europe & Central Asia,,LT
+LUX,Country,HIC,F,Luxembourg,Europe & Central Asia,,LU
+MAC,Country,HIC,F,Macao SAR,East Asia & Pacific,,MO
+MKD,Country,UMIC,T,"Macedonia, FYR",Europe & Central Asia,,MK
+MDG,Country,LIC,T,Madagascar,Sub-Saharan Africa,,MG
+MWI,Country,LIC,T,Malawi,Sub-Saharan Africa,,MW
+MYS,Country,UMIC,T,Malaysia,East Asia & Pacific,Malaysia,MY
+MDV,Country,UMIC,T,Maldives,South Asia,,MV
+MLI,Country,LIC,T,Mali,Sub-Saharan Africa,,ML
+MLT,Country,HIC,F,Malta,Middle East & North Africa,,MT
+MHL,Country,UMIC,T,Marshall Islands,East Asia & Pacific,,MH
+MRT,Country,LMIC,F,Mauritania,Sub-Saharan Africa,,MR
+MUS,Country,UMIC,T,Mauritius,Sub-Saharan Africa,,MU
+MEX,Country,UMIC,T,Mexico,Latin America & Caribbean,Mexico,MX
+FSM,Country,LMIC,F,Micronesia,East Asia & Pacific,,FM
+MDA,Country,LMIC,F,Moldova,Europe & Central Asia,,MD
+MCO,Country,HIC,F,Monaco,Europe & Central Asia,,MC
+MNG,Country,LMIC,F,Mongolia,East Asia & Pacific,,MN
+MNE,Country,UMIC,T,"Montenegro, Rep. of",Europe & Central Asia,,ME
+MAR,Country,LMIC,F,Morocco,Middle East & North Africa,,MA
+MOZ,Country,LIC,T,Mozambique,Sub-Saharan Africa,,MZ
+MMR,Country,LMIC,F,Myanmar,East Asia & Pacific,,MM
+NAM,Country,UMIC,T,Namibia,Sub-Saharan Africa,,NA
+NRU,Country,UMIC,T,Nauru,East Asia & Pacific,,NR
+NPL,Country,LIC,T,Nepal,South Asia,,NP
+NLD,Country,HIC,F,Netherlands,Europe & Central Asia,Netherlands,NL
+NCL,Country,HIC,F,New Caledonia,East Asia & Pacific,,NC
+NZL,Country,HIC,F,New Zealand,East Asia & Pacific,,NZ
+NIC,Country,LMIC,F,Nicaragua,Latin America & Caribbean,,NI
+NER,Country,LIC,T,Niger,Sub-Saharan Africa,,NE
+NGA,Country,LMIC,F,Nigeria,Sub-Saharan Africa,,NG
+MNP,Country,HIC,F,Northern Mariana Islands,East Asia & Pacific,,MP
+NOR,Country,HIC,F,Norway,Europe & Central Asia,Norway,NO
+OMN,Country,HIC,F,Oman,Middle East & North Africa,,OM
+PAK,Country,LMIC,F,Pakistan,South Asia,,PK
+PLW,Country,HIC,F,Palau,East Asia & Pacific,,PW
+PAN,Country,HIC,F,Panama,Latin America & Caribbean,,PA
+PNG,Country,LMIC,F,Papua New Guinea,East Asia & Pacific,,PG
+PRY,Country,UMIC,T,Paraguay,Latin America & Caribbean,,PY
+PER,Country,UMIC,T,Peru,Latin America & Caribbean,,PE
+PHL,Country,LMIC,F,Philippines,East Asia & Pacific,,PH
+POL,Country,HIC,F,Poland,Europe & Central Asia,Poland,PL
+PRT,Country,HIC,F,Portugal,Europe & Central Asia,Portugal,PT
+PRI,Country,HIC,F,Puerto Rico,Latin America & Caribbean,,PR
+QAT,Country,HIC,F,Qatar,Middle East & North Africa,,QA
+ROU,Country,UMIC,T,Romania,Europe & Central Asia,Romania,RO
+RUS,Country,UMIC,T,Russia,Europe & Central Asia,Russia,RU
+RWA,Country,LIC,T,Rwanda,Sub-Saharan Africa,,RW
+WSM,Country,UMIC,T,Samoa,East Asia & Pacific,,WS
+SMR,Country,HIC,F,San Marino,Europe & Central Asia,,SM
+STP,Country,LMIC,F,São Tomé and Príncipe,Sub-Saharan Africa,,ST
+SAU,Country,HIC,F,Saudi Arabia,Middle East & North Africa,Saudi Arabia,SA
+SEN,Country,LIC,T,Senegal,Sub-Saharan Africa,,SN
+SRB,Country,UMIC,T,Serbia,Europe & Central Asia,,RS
+SYC,Country,HIC,F,Seychelles,Sub-Saharan Africa,,SC
+SLE,Country,LIC,T,Sierra Leone,Sub-Saharan Africa,,SL
+SGP,Country,HIC,F,Singapore,East Asia & Pacific,,SG
+SXM,Country,HIC,F,Sint Maarten (Dutch part),Latin America & Caribbean,,SX
+SVK,Country,HIC,F,Slovak Republic,Europe & Central Asia,Slovakia,SK
+SVN,Country,HIC,F,Slovenia,Europe & Central Asia,Slovenia,SI
+SLB,Country,LMIC,F,Solomon Islands,East Asia & Pacific,,SB
+SOM,Country,LIC,T,Somalia,Sub-Saharan Africa,,SO
+ZAF,Country,UMIC,T,South Africa,Sub-Saharan Africa,South Africa,ZA
+SSD,Country,LIC,T,South Sudan,Sub-Saharan Africa,,SS
+ESP,Country,HIC,F,Spain,Europe & Central Asia,,ES
+LKA,Country,LMIC,F,Sri Lanka,South Asia,Spain,LK
+KNA,Country,HIC,F,St. Kitts and Nevis,Latin America & Caribbean,,KN
+LCA,Country,UMIC,T,St. Lucia,Latin America & Caribbean,,LC
+MAF,Country,HIC,F,St. Martin (French part),Latin America & Caribbean,,MF
+VCT,Country,UMIC,T,St. Vincent and the Grenadines,Latin America & Caribbean,,VC
+SDN,Country,LMIC,F,Sudan,Sub-Saharan Africa,,SD
+SUR,Country,UMIC,T,Suriname,Latin America & Caribbean,,SR
+SWE,Country,HIC,F,Sweden,Europe & Central Asia,Sweden,SE
+CHE,Country,HIC,F,Switzerland,Europe & Central Asia,Switzerland,CH
+SYR,Country,LIC,T,Syria,Middle East & North Africa,,SY
+TWN,Country,HIC,F,Taiwan Province of China,East Asia & Pacific,,TW
+TJK,Country,LIC,T,Tajikistan,Europe & Central Asia,,TJ
+TZA,Country,LIC,T,Tanzania,Sub-Saharan Africa,,TZ
+THA,Country,UMIC,T,Thailand,East Asia & Pacific,Thailand,TH
+TLS,Country,LMIC,F,Timor-Leste,East Asia & Pacific,,TL
+TGO,Country,LIC,T,Togo,Sub-Saharan Africa,,TG
+TON,Country,UMIC,T,Tonga,East Asia & Pacific,,TO
+TTO,Country,HIC,F,Trinidad and Tobago,Latin America & Caribbean,,TT
+TUN,Country,LMIC,F,Tunisia,Middle East & North Africa,,TN
+TUR,Country,UMIC,T,Turkey,Europe & Central Asia,Turkey,TR
+TKM,Country,UMIC,T,Turkmenistan,Europe & Central Asia,,TM
+TCA,Country,HIC,F,Turks and Caicos Islands,Latin America & Caribbean,,TC
+TUV,Country,UMIC,T,Tuvalu,East Asia & Pacific,,TV
+UGA,Country,LIC,T,Uganda,Sub-Saharan Africa,,UG
+UKR,Country,LMIC,F,Ukraine,Europe & Central Asia,Ukraine,UA
+ARE,Country,HIC,F,United Arab Emirates,Middle East & North Africa,,AE
+GBR,Country,HIC,F,United Kingdom,Europe & Central Asia,United Kingdom,GB
+USA,Country,HIC,F,United States,North America,United States,US
+URY,Country,HIC,F,Uruguay,Latin America & Caribbean,,UY
+UZB,Country,LMIC,F,Uzbekistan,Europe & Central Asia,,UZ
+VUT,Country,LMIC,F,Vanuatu,East Asia & Pacific,,VU
+VEN,Country,UMIC,T,Venezuela,Latin America & Caribbean,,VE
+VNM,Country,LMIC,F,Vietnam,East Asia & Pacific,Vietnam,VN
+VIR,Country,HIC,F,Virgin Islands (U.S.),Latin America & Caribbean,,VI
+PSE,Country,LMIC,F,West Bank and Gaza,Middle East & North Africa,,PS
+YEM,Country,LIC,T,Yemen,Middle East & North Africa,,YE
+ZMB,Country,LMIC,F,Zambia,Sub-Saharan Africa,,ZM
+ZWE,Country,LIC,T,Zimbabwe,Sub-Saharan Africa,,ZW
+ARB,Region,,F,,,,
+CSS,Region,,F,,,,
+CEB,Region,,F,,,,
+EAR,Region,,F,,,,
+EAS,Region,,F,,,,
+EAP,Region,,F,,,,
+TEA,Region,,F,,,,
+EMU,Region,,F,,,,
+ECS,Region,,F,,,,
+ECA,Region,,F,,,,
+TEC,Region,,F,,,,
+EUU,Region,,F,,,,
+FCS,Region,,F,,,,
+HPC,Region,,F,,,,
+HIC,Region,,F,,,,
+IBD,Region,,F,,,,
+IBT,Region,,F,,,,
+IDB,Region,,F,,,,
+IDX,Region,,F,,,,
+IDA,Region,,F,,,,
+LTE,Region,,F,,,,
+LCN,Region,,F,,,,
+LAC,Region,,F,,,,
+TLA,Region,,F,,,,
+LDC,Region,,F,,,,
+LMY,Region,,F,,,,
+LIC,Region,,F,,,,
+LMC,Region,,F,,,,
+MEA,Region,,F,,,,
+MNA,Region,,F,,,,
+TMN,Region,,F,,,,
+MIC,Region,,F,,,,
+NAC,Region,,F,,,,
+OED,Region,,F,,,,
+OSS,Region,,F,,,,
+PSS,Region,,F,,,,
+PST,Region,,F,,,,
+PRE,Region,,F,,,,
+SST,Region,,F,,,,
+SAS,Region,,F,,,,
+TSA,Region,,F,,,,
+SSF,Region,,F,,,,
+SSA,Region,,F,,,,
+TSS,Region,,F,,,,
+UMC,Region,,F,,,,
+WLD,Region,,F,,,,
+ANTA,Territory,,F,,,,
+COOK,Territory,,F,,,,
+FALK,Territory,,F,,,,
+FCZE,Territory,,F,,,,
+FSRM,Territory,,F,,,,
+FUSR,Territory,,F,,,,
+FYUG,Territory,,F,,,,
+FRGU,Territory,,F,,,,
+EDEU,Territory,,F,,,,
+WDEU,Territory,,F,,,,
+GUAD,Territory,,F,,,,
+HAWA,Territory,,F,,,,
+HKNG,Territory,,F,,,,
+MART,Territory,,F,,,,
+MONT,Territory,,F,,,,
+NETH,Territory,,F,,,,
+NIUE,Territory,,F,,,,
+REUN,Territory,,F,,,,
+STHE,Territory,,F,,,,
+STPM,Territory,,F,,,,
+BAHA,Territory,,F,,,,
+USPA,Territory,,F,,,,
+WAKE,Territory,,F,,,,
+WSAH,Territory,,F,,,,
