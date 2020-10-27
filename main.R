@@ -1,6 +1,7 @@
 ## Purpose: This script contains the 'main function'.
 
 rm(list=ls())
+#Uncomment this for easy running
 #setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
 ################################### SETUP AND INPUT DATA ###################################
