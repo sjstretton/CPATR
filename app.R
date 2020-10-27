@@ -10,7 +10,7 @@ library(ggrepel)
 SelectedCarbonTax=10
 
 CalledFromShinyScript=TRUE
-source("1-Main.R")
+source("main.R")
 source("comparison/3-PostProcessing.R")
 source("comparison/4-ModelComparison.R")
 source("comparison/5-MakeGraphs.R")
