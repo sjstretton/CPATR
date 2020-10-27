@@ -1,0 +1,12 @@
+name: CPAT-R
+title: CPAT-R
+username:
+account: rtaw
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3107093
+bundleId: 3788727
+url: https://rtaw.shinyapps.io/CPAT-R/
+when: 1603820634.57264
+asMultiple: FALSE
+asStatic: FALSE
