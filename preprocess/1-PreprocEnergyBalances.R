@@ -4,8 +4,6 @@ library(readxl)
 library(magrittr)
 setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 CoreSectors=c("nonpowertrans", "power", "tfc ", "road", "rail", "domesair","domesnav", "intair", "resident", "food_forest", "services", "mining_chemicals", "ironstl", "nonferrmet", "machinery", "cement", "other_manufact", "construc", "ononspec") #"nonenuse"
-#Fuels <- read_excel("temp/Categories.xlsx", sheet = "Fuels")
-#Flow <- read_excel("temp/Categories.xlsx", sheet = "Flow",col_types=c("text","text","text","text","logical","numeric","numeric")) %>% select(-Stage)
 
 Fuels <- read_csv("../metadata/EmissionsFactors.csv")
 Flow <- read_csv("../metadata/SectorFullLookup.csv")

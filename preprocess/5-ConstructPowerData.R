@@ -2,23 +2,25 @@
 library(tidyverse)
 library(magrittr)#
 library(readxl)
-#if(!exists("MainRDirectory")) MainRDirectory="C:/Users/wb547395/OneDrive - WBG/Documents/SimpleCPATR/R"
-#setwd(MainRDirectory)
-setwd("C:/Users/wb547395/OneDrive - WBG/Documents/Preproc/preprocesseddata")
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
 #rm(list=ls())
 PJPerktoe <- 0.041868
 RetirementProportion=0.04
-CountriesTable <- read_excel("temp/Categories.xlsx", sheet = "Countries")  #%>% filter(Type=="Country" & IncomeGroupSymbol!="HIC")
+PowerOrder=c("coa","nga","oil","nuc","wnd","sol","hyd","ore","bio")
+CountriesTable <- read_csv("../metadata/CountryLookup.csv") %>% filter(Type=="Country")
+
 CountryNameLookup <-  CountriesTable %>% select(CountryCode, CountryName)
 CountryList <- (CountryNameLookup$CountryCode)
+SimpleCountryCodeCountryLookup <-CountriesTable %>% select(CountryCode, CountryName)
+#%>%  bind_rows(tibble(CountryCode=c("WLD","WLD","EUR","MENA","SSAFR","KOR"),CountryName=c("World","Global","Europe","MENA","Sub-Saharan-Africa","South Korea")))
+
 
 ##############
 
-#PowerDemand <- read_csv("C:/Users/wb547395/OneDrive - WBG/Documents/SimpleCPATR/R/newpowerintermediate/PowerDemand.csv")
 
 #5C-FillInLCOEAssumptions.R
-PowerOrder=c("coa","nga","oil","nuc","wnd","sol","hyd","ore","bio")
+
 
 SectoralPowerDemand= read_csv("powerintermediate/SectoralPowerDemand.csv")
 
@@ -92,12 +94,10 @@ LCOECalc = function(CapEx=0, OMV=0, OMF=0, FuelPrice.kwh=0, Eff=0, LF=0, Constru
 FuelPricesGlobal = read_csv("rawdata/GlobalPricesGJ.csv") %>% pivot_longer(cols=as.character(2018:2035),names_to="Year",values_to="FuelPriceGlobal") %>%
   filter(Year=="2019") %>% select(-Year)
 
-PriceUnitConversions <- read_csv("temp/PriceUnitConversions.csv",col_types = "ccdc")
+PriceUnitConversions <- read_csv("enerdata/PriceUnitConversions.csv",col_types = "ccdc")
 
-SimpleCountryCodeCountryLookup <- read_csv("temp/SimpleCountryCodeCountryLookup.csv") %>%
-  bind_rows(tibble(CountryCode=c("WLD","WLD","EUR","MENA","SSAFR","KOR"),CountryName=c("World","Global","Europe","MENA","Sub-Saharan-Africa","South Korea")))
 
-FuelPriceAssumptionsUSDRaw <- read_csv("temp/FuelPriceAssumptionsUSD.csv") %>%
+FuelPriceAssumptionsUSDRaw <- read_csv("enerdata/FuelPriceAssumptionsUSD.csv") %>%
   rename(FuelPrice = `Fuel price`) %>%
   separate(UnitAllUSD, sep = "_", into= c("NotTheCurrency","EnergyUnit")) %>%
   separate(`Country-Commodity`, sep = "_", into= c("EnergyType","CountryName","Scenario")) %>%
@@ -149,7 +149,8 @@ LCOEAssumptions <- read_csv("rawdata/LCOE.csv") %>%
     left_join(LHV.Conversion) %>%
     mutate(ThermalEfficiency.Je_Jth.ncv=ThermalEfficiency.Je_Jth.ncv/Jlhv_Jhhv) %>%
     select(-DebtRatio ,-CostOfEquity,-CostOfDebt,-Jlhv_Jhhv) %>%
-    mutate(ConstructionTime=2.4,Lifetime = 20,RealEscalationRate=0)
+    mutate(ConstructionTime=2.4,Lifetime = 20,RealEscalationRate=0) %>%
+  filter(CountryCode %in% CountryList )
 
 LCOEAssumptions %<>% left_join(FuelPricesGlobal) %>%
   left_join(FuelPriceAssumptionsUSD.2018) %>%
@@ -182,11 +183,10 @@ LCOEAssumptions.Global = LCOEAssumptions %>%
   summarise(across(LCOE.USD_kWh:FuelPriceGlobal,mean,na.rm=TRUE)) %>%
   arrange(factor(FuelType, levels = PowerOrder))
 
-WBCountriesTable <- read_csv("temp/Wbcountries.csv")
-CountriesToModel=WBCountriesTable$CountryCode
+
 Base.Power <- expand_grid(CountryCode=CountryList,FuelType=PowerOrder)
 
-Base.Power.Global=Base.Power %>% inner_join(LCOEAssumptions.Global)
+Base.Power.Global=Base.Power %>% left_join(LCOEAssumptions.Global)
 LCOEAssumptions.All = rows_update(Base.Power.Global,LCOEAssumptions,by=c("CountryCode", "FuelType"))
 LCOEAssumptions.ore=LCOEAssumptions.All %>%
   filter(FuelType%in%c("wnd","sol","hyd")) %>%
@@ -212,15 +212,14 @@ AllPowerData <- Capacity %>% left_join(PrimaryEnergyInputToPower) %>%
                                      ThermalEfficiency.Je_Jth.ncv,RawThermalEfficiency)) %>%
   mutate(AvailabilityFactor = if_else(FuelType %in% c("coa","nga"), 0.9, 0))
 
-#write_csv(AllPowerData,path="powerintermediate/AllPowerData.csv")
 
 AllPowerData.Selected = AllPowerData %>% mutate(Year=2018,Country.FuelCode=paste(tolower(CountryCode),FuelType,sep=".")) %>%
   select(Country.FuelCode,CountryCode, FuelType, Year, PrimaryEnergyInputToPower.ktoe,PowerOutput.GWh,
                                                 Capacity.MW, PowerOutput.MWy,PrimaryEnergyInputToPower.MWy,
                                                 CapacityFactor,ThermalEfficiency,AvailabilityFactor,
                                                 LCOE.TotalCalc.USD_kWh,LCOE.Var.USD_kWh, VarOpex.USD_kWh, LCOE.Fixed.USD_kWh,
-                                                Production.MWy
+                                                CapEx.USD_kW
                                                 )
-write_csv(AllPowerData.Selected,path="output/SelectedPowerData.csv")
+write_csv(AllPowerData.Selected,file="output/SelectedPowerData.csv")
 
 AllPowerData.Selected.China = AllPowerData.Selected %>% filter(CountryCode=="CHN")
