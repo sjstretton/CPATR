@@ -58,7 +58,7 @@ IEAcols=cols(
   `2040` = col_double()
 )
 
-IEAScenarios <- read_csv("comparison/3IEAData/IEAScenarios.csv", col_types=IEAcols) %>%
+IEAScenarios <- read_csv("5-comparison/3IEAData/IEAScenarios.csv", col_types=IEAcols) %>%
   pivot_longer(cols = 6:11, names_to = "Year",values_to = "Value",values_drop_na=TRUE) %>%
   mutate (Year = as.integer(Year)) %>%
   inner_join(FuelTypeLookup) %>%
@@ -109,9 +109,9 @@ LongFormColSpec=cols(
   `2033` = col_double()
 )
 
-ScenarioDefinition <- read_csv("comparison/2ResultsFromCPAT/ScenarioDefinition.csv") %>% rename(Superscenario=`Superscenario Number`)
+ScenarioDefinition <- read_csv("5-comparison/2ResultsFromCPAT/ScenarioDefinition.csv") %>% rename(Superscenario=`Superscenario Number`)
 
-LatestCPATResults <- read_csv("comparison/2ResultsFromCPAT/MST1.csv", na = c("", "NA","#DIV/0!","#N/A")) %>%
+LatestCPATResults <- read_csv("5-comparison/2ResultsFromCPAT/MST1.csv", na = c("", "NA","#DIV/0!","#N/A")) %>%
   separate(`CPAT Code With Country Code`,into=c("CountryCode",NA,NA,NA,NA,NA),sep="[.]") %>%
   mutate(CountryCode=toupper(CountryCode)) %>%
   left_join(CountryNameLookup) %>%  left_join(ScenarioDefinition,by="Superscenario") %>%
@@ -132,7 +132,7 @@ mutate(Model=case_when(
 select("Country","Quantity","Scenario","CarbonTax","Model","Fuel","Year","Power.ktoe")
 
 
-Results <- read_csv("comparison/2ResultsFromCPAT/LongFormResults.csv", col_types = LongFormColSpec,na = c("", "NA","#DIV/0!","#N/A"))
+Results <- read_csv("5-comparison/2ResultsFromCPAT/LongFormResults.csv", col_types = LongFormColSpec,na = c("", "NA","#DIV/0!","#N/A"))
 
 LongFormResults = Results %>% filter(!Fuel%in%c("tot","Total")) %>%
   filter(Quantity=="Power Supplied ktoe") %>%
@@ -152,7 +152,7 @@ LongFormResults = LongFormResults %>%
   filter(Scenario == "Carbon tax") %>%
   select(Scenario, Model, Country, CarbonTax, Fuel,   Year, Power.GWh)
 
-IEACarbonTaxScenarios <- read_csv("comparison/3IEAData/IEACarbonTaxScenarios.csv",col_types=cols(  Scenario = col_character(),  Year = col_integer(),   CarbonTax = col_double()))
+IEACarbonTaxScenarios <- read_csv("5-comparison/3IEAData/IEACarbonTaxScenarios.csv",col_types=cols(  Scenario = col_character(),  Year = col_integer(),   CarbonTax = col_double()))
 
 BigCountries.Generation %<>% inner_join(IEACarbonTaxScenarios) %>% select(Scenario, Model, Country, CarbonTax, Fuel,   Year, Power.GWh)
 
@@ -165,7 +165,7 @@ CombinedPowerDataGraph <- function(CountrySelected) {
   PowerPlotGenerated=ggplot(CombinedPowerData.SelectedCountry, aes(x = Year, y = Power.GWh, fill = Fuel)) +
     geom_bar(position = "stack", stat = "identity") +
     facet_wrap(Model~CarbonTax)+ ggtitle(paste0("Power Sector Models: ",CountrySelected))
-  cowplot::save_plot(plot=PowerPlotGenerated,filename=paste0("output/",CountrySelected,"Plot.png"),base_height=7)
+  cowplot::save_plot(plot=PowerPlotGenerated,filename=paste0("4-output/",CountrySelected,"Plot.png"),base_height=7)
   print(PowerPlotGenerated)
 }
 
@@ -177,7 +177,7 @@ Generation.China = BigCountries.Generation %>% filter(Country=="China")
 
 AllPower=rbind(PowerResults,BigCountries.Generation)
 AllPower$Year = as.integer(AllPower$Year)
-CarbonTaxScenarios <- read_csv("comparison/3IEAData/IEAandCPATCarbonTaxScenarios.csv",col_types=cols(  Scenario = col_character(),  Year = col_integer(),   CarbonTax = col_double()))
+CarbonTaxScenarios <- read_csv("5-comparison/3IEAData/IEAandCPATCarbonTaxScenarios.csv",col_types=cols(  Scenario = col_character(),  Year = col_integer(),   CarbonTax = col_double()))
 AllPower = CarbonTaxScenarios %>%
   inner_join(AllPower) %>%
   filter(Fuel!="Total") %>% inner_join( FuelGroupings) %>%

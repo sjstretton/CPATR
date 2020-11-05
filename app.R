@@ -11,9 +11,9 @@ SelectedCarbonTax=10
 
 CalledFromShinyScript=TRUE
 source("main.R")
-source("comparison/3-PostProcessing.R")
-source("comparison/4-ModelComparison.R")
-source("comparison/5-MakeGraphs.R")
+source("5-comparison/3-PostProcessing.R")
+source("5-comparison/4-ModelComparison.R")
+source("5-comparison/5-MakeGraphs.R")
 CarbonTaxInTime <-  CarbonTaxTrajectoryForm %>% mutate(CarbonTaxRate=ProportionOfMaxCTaxRate*SelectedCarbonTax)
 ChosenCountry = "CHN"
 SelectedCarbonTax = 100
@@ -29,8 +29,8 @@ ui <- fluidPage(
                selectInput("SelectedCarbonTax", "Select Carbon Tax", CTRange),
                tableOutput("static")
                ),
-      tabPanel("Sectoral Comparison", plotOutput("sectoralsplit", width = "1000px", height = "700px")),
-      tabPanel("Intermodel Comparison", plotOutput("modelcomparison", width = "1000px", height = "700px"))
+      tabPanel("Sectoral comparison", plotOutput("sectoralsplit", width = "1000px", height = "700px")),
+      tabPanel("Intermodel comparison", plotOutput("modelcomparison", width = "1000px", height = "700px"))
     )
   )
 )
@@ -51,7 +51,7 @@ server <- function(input, output, session) {
     }, res = 96)
 
   output$modelcomparison <- renderPlot({
-    InterModelComparison
+    InterModelcomparison
   }, res = 96)
 
 }

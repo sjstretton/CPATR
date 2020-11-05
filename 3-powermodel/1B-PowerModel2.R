@@ -49,7 +49,8 @@ MainPowerLargeDataTable <-  YearsTable %>%
   select(CountryCode,FuelType,Year,everything())
 
 #################################################################
-ApplyPowerModelToSpecificYear=  function(CurrentYearTemp,CTMaxRate=0,MainPowerDataTable=MainPowerLargeDataTable) {
+ApplyPowerModelToSpecificYear=  function(CurrentYearTemp,CTMaxRate=0,
+                                         MainPowerDataTable=MainPowerLargeDataTable) {
   i = as.integer(CurrentYearTemp-BaseYear+1)
   CurrentYearPowerFeaturesByFuelType = filter(MainPowerDataTable,Year==CurrentYearTemp)
 
@@ -73,20 +74,11 @@ ApplyPowerModelToSpecificYear=  function(CurrentYearTemp,CTMaxRate=0,MainPowerDa
                                                  RequiredCoalAndGas=max(0,TotalThisYearDemand.MWy-TotalNonCoalAndGasGeneration))
 
   CoalAndGas = CurrentYearPowerFeaturesByFuelType %>%
-    filter(FuelType %in% c("coa","nga")) %>% #ungroup() %>% group_by(CountryCode) %>%
-    mutate(MaximumGen=Capacity.MW*0.9,
-           SumMaximumGen=sum(MaximumGen),
-           OtherMaximumGen=SumMaximumGen-MaximumGen,
-           MinimumGen = pmax(0,RequiredCoalAndGas-OtherMaximumGen),
-           SumMinimumGen=sum(MinimumGen),
-           RemainderAfterMinimas=RequiredCoalAndGas-SumMinimumGen,
-           MinVarCost=min(LCOE.Var.USD_kWh),
-           RelVarCost=LCOE.Var.USD_kWh/MinVarCost,
-           LogitExp=exp(-DispatchBeta*RelVarCost),
-           SumLogitExp=sum(LogitExp),
-           ProportionOfCoalGasGeneration=LogitExp/SumLogitExp,
-           SumProportionOfCoalGasGeneration=sum(ProportionOfCoalGasGeneration)
-    ) %>%
+    filter(FuelType %in% c("coa","nga")) %>%
+    mutate(MinimumGen = pmax(0,RequiredCoalAndGas-(sum(Capacity.MW*0.9)-Capacity.MW*0.9)),
+           RemainderAfterMinimas=RequiredCoalAndGas-sum(MinimumGen),
+           LogitExp=exp(-DispatchBeta*LCOE.Var.USD_kWh/min(LCOE.Var.USD_kWh)),
+           ProportionOfCoalGasGeneration=LogitExp/sum(LogitExp)) %>%
     select(CountryCode, FuelType, RequiredCoalAndGas, MaximumGen, SumMaximumGen,
            OtherMaximumGen, MinimumGen, SumMaximumGen, OtherMaximumGen,
            RemainderAfterMinimas,ProportionOfCoalGasGeneration ,MinVarCost,
@@ -95,7 +87,8 @@ ApplyPowerModelToSpecificYear=  function(CurrentYearTemp,CTMaxRate=0,MainPowerDa
   CurrentYearPowerFeaturesByFuelType = rows_update(CurrentYearPowerFeaturesByFuelType, CoalAndGas, by = c("CountryCode", "FuelType"))
 
 
-  if(i>1) {CurrentYearPowerFeaturesByFuelType %<>% mutate(Production.MWy=if_else(FuelType%in%c("coa","nga"),MinimumGen+RemainderAfterMinimas*ProportionOfCoalGasGeneration,EffectiveCapacity.MW) ) }
+  if(i>1) {CurrentYearPowerFeaturesByFuelType %<>% mutate(Production.MWy=if_else(FuelType%in%c("coa","nga"),
+                                                                                 MinimumGen+RemainderAfterMinimas*ProportionOfCoalGasGeneration,EffectiveCapacity.MW) ) }
   CurrentYearPowerFeaturesByFuelType %<>% mutate(GenerationShare = Production.MWy/sum(Production.MWy))
 
 
@@ -109,12 +102,9 @@ ApplyPowerModelToSpecificYear=  function(CurrentYearTemp,CTMaxRate=0,MainPowerDa
 
   CurrentYearPowerFeaturesByFuelType %<>%
     mutate(CostOfCheapestOption=min(LCOE.TotalCalc.USD_kWh),
-           RelativeCost=LCOE.TotalCalc.USD_kWh/CostOfCheapestOption,
-           LogitNominator=exp(-InvestmentBeta*RelativeCost),
+           LogitNominator=exp(-InvestmentBeta*LCOE.TotalCalc.USD_kWh/CostOfCheapestOption),
            SumLogitNominator=sum(LogitNominator),
-           ProportionOfInvestment=LogitNominator/SumLogitNominator,
-           CheckSum=sum(ProportionOfInvestment),
-           NewEffectiveInvestments=ProportionOfInvestment*TotalNewEffectiveInvestmentsNeeded,
+           NewEffectiveInvestments=TotalNewEffectiveInvestmentsNeeded*LogitNominator/SumLogitNominator,
            NewNameplateInvestments=NewEffectiveInvestments/CapacityFactor,
            NextYearEffectiveCapacity.MW=EffectiveCapacity.MW-EffectiveEndOfYearRetirements+NewEffectiveInvestments,
            NextYearCapacity.MW=Capacity.MW-NamePlateEndOfYearRetirements+NewNameplateInvestments

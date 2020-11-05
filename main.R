@@ -2,7 +2,7 @@
 
 rm(list=ls())
 #Uncomment the line below for this to work in R studio
-#setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
 ################################### SETUP AND INPUT DATA ###################################
 library(tidyverse)
@@ -11,138 +11,59 @@ library(magrittr)
 library(cowplot)
 library(ggrepel)
 
-#Hard Coded Variables
-AnalysisEndYear <- 2030L
-BaseYear <- 2018L
-NumberOfYears <- 15L
-EndYear <- BaseYear+NumberOfYears-1
-DoPower <- FALSE
-PJPerktoe <- 0.041868
-FuelList <- c("coa", "nga", "oop", "gso", "die", "lpg", "ker", "jfu", "bio", "ecy")
-PowerFuelTypes <- c("coa", "nga", "oop", "nuc", "wnd", "sol", "ore", "hyd", "bio")
-TCAFCountryList <- c("CHN", "IND", "IRN", "IDN", "MEX", "BRA", "ZAF", "TUR", "THA", "MYS", "KAZ", "EGY", "VNM",
-                     "PAK", "UKR", "IRQ", "PHL", "DZA", "BGD", "UZB", "NGA", "COL", "TKM", "ROU", "MAR")
-CountryCategoryList <- as_factor(c("VeryLarge","Large","MediumLarge","Medium","MediumSmall","Small","VerySmall"))
 
-#Read in Lookup Tables
-Fuels <- read_csv("metadata/EmissionsFactors.csv")
-Flow <- read_csv("metadata/SectorFullLookup.csv")
-Elasticities <- read_csv("metadata/Elasticities.csv") %>% filter(FuelType %in% FuelList)
-SectorSubsectorLookup <- read_csv("metadata/SectorsAndSubsectorsNarrowLookup.csv")
-CountriesTable <- read_csv("metadata/CountryLookup.csv")
-CountryNameLookup <-  CountriesTable %>% select(CountryCode, CountryName)
 
-#Define Included Elements of Each Dimension
-YearList <- as.character(BaseYear:2033)
-SectorList <- unique(Flow$Sector); SectorList=SectorList[!is.na(SectorList)]
-SubsectorList <- unique(Flow$SubsectorCode); SubsectorList=SubsectorList[!is.na(SubsectorList)]
-ScenariosList <- c("Baseline1","CTaxScen2")
-CountryList <- TCAFCountryList  #c("CHN","IND","USA","JPN") #(CountryNameLookup$CountryCode)[1:10]
+#Import Core Variables
+source("0-coremodel/1-ImportVariables.R")
+CountryList <- TCAFCountryList ##c("CHN") #Other options: ...,"IND","USA","JPN" #(CountryNameLookup$CountryCode)[1:10] #
 SelectedCountryNames = CountryNameLookup %>% filter(CountryCode %in% CountryList) %>% select(CountryName)
-
-
-#Add Energy Balances
-CPATEnergyBalances2018 <- read_csv("preprocess/output/ProcessedEnergyBalances2018.csv")
-GDPRelativeToBase <- read_csv("preprocess/output/GDPRelativeToBase.csv",col_types="ccd")
-
-#Add Power Data
-SelectedPowerData=read_csv("preprocess/output/SelectedPowerData.csv") %>% mutate(EffectiveCapacity.MW=Capacity.MW*CapacityFactor) %>%
+SelectedPowerData %<>% mutate(EffectiveCapacity.MW=Capacity.MW*CapacityFactor) %>%
   mutate(Production.GWh=PowerOutput.GWh, Production.MWy=PowerOutput.MWy, Year = BaseYear,LCOE.USD_kWh=LCOE.TotalCalc.USD_kWh) %>%
   filter(CountryCode %in% CountryList)
+DoPower <- TRUE
 
-#Add Fuel Prices
-FuelPricesGlobal <- read_csv("preprocess/rawdata/GlobalPricesGJ.csv") %>%
-  pivot_longer(cols=as.character(2018:2035),names_to="Year",values_to="Price")
-FuelPricesGlobalForPower  <- FuelPricesGlobal %>%  mutate(Year=as.integer(Year))
-FuelPrices <- FuelPricesGlobal
+source("0-coremodel/2-BuildBaseTables.R")
+source("0-coremodel/3-CoreModel.R")
+source("3-powermodel/1-PowerModel.R")
 
-#Add Base Price
-BaseYearPriceLookup <- FuelPrices %>% filter(Year==as.character(BaseYear)) %>% rename(BaseYearPrice=Price) %>% select(-Year)
-FuelPrices <- FuelPrices %>% rename(BaselinePrice=Price) %>% inner_join(BaseYearPriceLookup)
+MainSegmentedDataTable <- BuildBaseTable(CountryList_=CountryList,SubsectorList_=SubsectorList, FuelList_=FuelList,YearList_=YearList,CTRange_=CTRange,BaseYear_=BaseYear,SectorSubsectorLookup_=SectorSubsectorLookup) %>%
 
-#Define Carbon Tax
-CarbonTaxTrajectoryForm <- read_csv("preprocess/output/CarbonTaxTrajectoryForm.csv",col_types = "cd") #Shape of Carbon Tax Trajectory is Currently Standardised
-CTRange=seq(from=0, to=100, by=20)
 
-#Source Functions for Power Model
-source("powermodel/1-PowerModel.R")
+    BuildMainSegmentedDataTable(Elasticities_=Elasticities,Fuels_=Fuels,CPATEnergyBalancesBaseYear_=CPATEnergyBalances2018,
+                                                 GDPRelativeToBase_=GDPRelativeToBase,FuelPrices_=FuelPrices,CarbonTaxTrajectoryForm_=CarbonTaxTrajectoryForm)
+
+
+OutputList=RunCoreModel(MainSegmentedDataTable_=MainSegmentedDataTable,BaseYear_=BaseYear,AnalysisEndYear_=AnalysisEndYear,CTRange_=CTRange,DoPower_=DoPower)
+
+OutputSegmentedDataTable=OutputList[[1]]
 
 #################################################################
+#TestThat
 
-PowerBase <- expand_grid(CountryCode=CountryList,SubsectorCode="pow",
-                         FuelType=PowerFuelTypes,Year=YearList,Scenario="CarbonTax",CTScenarioRate=CTRange) #For power sector model
-NonPowerBase <- expand_grid(CountryCode=CountryList,SubsectorCode=setdiff(SubsectorList, "pow"),
-                            FuelType=FuelList,Year=YearList,Scenario="CarbonTax",CTScenarioRate=CTRange)
+#Get Coal Cement from CPAT Results.
+  ## Find CPAT results that have Coal Cement - yes MST
+MST1.new <- read_csv("5-comparison/2ResultsFromCPAT/MST1-new.csv",col_types = "iiccccccidddddddddddddd")
 
-Base <- NonPowerBase %>% bind_rows(PowerBase) %>%
-  mutate(Code = paste( CountryCode, SubsectorCode, FuelType,Year,sep=".")) %>%
-  select(Code, everything()) %>%
-  inner_join(SectorSubsectorLookup) %>%
-  mutate(Time = as.integer(Year)-BaseYear) %>%  select (-FlowCode, -Code)
+#Found one side!
+PJPerktoe <- 0.041868
+FilteredInfo1  = MST1.new %>% filter(QuantityCodeMain=="ener" & SubsectorCode=="res" & FuelCode=="nga"& SubscenarioNumber==1L)
+ExpectedValue1 = FilteredInfo1 %>% select(`2018`) %>% pull
+FilteredInfo2  = OutputSegmentedDataTable%>% filter(CountryCode=="CHN" & SubsectorCode=="res" & FuelType=="nga"& CTScenarioRate==0)
+ExpectedValue2 = FilteredInfo2%>% filter(Year =="2018") %>% select(EnergyConsumption)/PJPerktoe
 
+View(FilteredInfo1)
+#Now Find the other side!
 
-CombinedStatic <- Base %>%
-  left_join(Elasticities) %>%
-  left_join(Fuels) %>%
-  left_join(CPATEnergyBalances2018)  %>%
-  left_join(GDPRelativeToBase)  %>%
-  left_join(FuelPrices) %>%
-  left_join(CarbonTaxTrajectoryForm) %>%
-  mutate(Model="") %>%
-  select(CountryCode, Sector, SubsectorCode, FuelType, Scenario, Model, CTScenarioRate, Year, Time, el_inc, el_dem, el_cons, eff, EmissionsFactor,
-    ProportionOfMaxCTaxRate, BaseYearEnergy, GDPFactor, BaseYearPrice, BaselinePrice) %>%
-  mutate(BaseYearEmissions=BaseYearEnergy*EmissionsFactor, CTRate=0, FuelPrice=0, PriceChangeFactor=1, IncomeEffect=1, EfficiencyEffect=1,
-         PriceEffect=1, TotalEffect=1,EnergyConsumption=0, Emissions=0, SensitivityPerDolPerT=0, DeltaPerDolPerT=0)
-
-CombinedNew=CombinedStatic
-
-CombinedAll <- CombinedStatic[0,]
-
-UpdateCoreData = function(CombinedStaticStyleInput,CTMaxRate=CTMaxRate) {
-
-  CombinedStaticStyleInput <- CombinedStaticStyleInput %>%
-    mutate(Model="R",
-           CTScenarioRate=CTMaxRate,
-           CTRate=CTMaxRate*ProportionOfMaxCTaxRate,
-           FuelPrice=BaselinePrice + CTMaxRate*ProportionOfMaxCTaxRate*EmissionsFactor,
-           PriceChangeFactor=(BaselinePrice + CTMaxRate*ProportionOfMaxCTaxRate*EmissionsFactor)/BaseYearPrice,
-           EfficiencyEffect=(1+eff)^((-Time)*(1+el_dem)), #Autonomous Efficiency only
-           IncomeEffect=(GDPFactor)^(el_inc),
-           PriceEffect=(PriceChangeFactor)^(el_dem+el_cons+el_dem*el_cons),
-           TotalEffect=if_else(SubsectorCode%in%c("ral","nav","avi"),IncomeEffect,EfficiencyEffect*IncomeEffect*PriceEffect),
-           EnergyConsumption=BaseYearEnergy*TotalEffect,
-           Emissions=EmissionsFactor*EnergyConsumption,
-           SensitivityPerDolPerT=IncomeEffect*EfficiencyEffect*(EmissionsFactor/BaseYearPrice)*(el_dem+el_cons+el_dem*el_cons),
-           DeltaPerDolPerT=IncomeEffect*EfficiencyEffect*(EmissionsFactor/BaseYearPrice)*(el_dem+el_cons+el_dem*el_cons)*BaseYearEnergy
-    )
-  CombinedStaticStyleInput
-}
+  ## Where are those results
+  ## Create a function to get those results
+  ## Create
 
 
+ResultsList <- RunCoreModel(MainSegmentedDataTable, BaseYear_=BaseYear,AnalysisEndYear_=AnalysisEndYear,CTRange_=CTRange,DoPower_=DoPower)
 
-################################### START OF MAIN LOOP ###################################
-for (CTMaxRate in CTRange)  {
-  for(FilterYear in (BaseYear:AnalysisEndYear)) {
-    FilteredTable = CombinedNew %>% filter(Year==as.character(FilterYear) & CTScenarioRate==CTMaxRate)
-    UpdatedFilteredTable = UpdateCoreData(CombinedStaticStyleInput=FilteredTable,CTMaxRate=CTMaxRate)
-    CombinedNew[CombinedNew$Year==as.character(FilterYear)& CombinedNew$CTScenarioRate==CTMaxRate,] <- UpdatedFilteredTable
-    if(DoPower) MainPowerLargeDataTable=ApplyPowerModelToSpecificYear(CurrentYearTemp=FilterYear,CTMaxRate=CTMaxRate,MainPowerDataTable=MainPowerLargeDataTable)
-    }
-}
-################################### END OF MAIN LOOP ###################################
+MainSegmentedDataTable <- ResultsList[[1]] %>% filter(Year %in% (BaseYear:AnalysisEndYear))
+SelectedPowerDataByGenType <- ResultsList[[2]] %>% filter(Year %in% (BaseYear:AnalysisEndYear))
 
-CombinedNew <- CombinedNew %>% filter(Year %in% (BaseYear:AnalysisEndYear))
-
-
-CombinedAll=CombinedNew
-
-save(CombinedAll,CarbonTaxTrajectoryForm,CTRange,file="output/MainDataFile.rda")
-write_csv(CombinedAll,file="output/MainDataFile.csv")
-
-
-if(DoPower) {
-  source("powermodel/1-PowerModel.R")
-
-
-}
-
+save(MainSegmentedDataTable,CarbonTaxTrajectoryForm,CTRange,SelectedPowerDataByGenType,file="4-output/MainDataFile.rda")
+write_csv(MainSegmentedDataTable,file="4-output/MainDataFile.csv")
+write_csv(SelectedPowerDataByGenType,file="4-output/SelectedPowerDataByGenType.csv")

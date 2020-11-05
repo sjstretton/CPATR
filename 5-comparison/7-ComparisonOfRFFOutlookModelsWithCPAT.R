@@ -11,7 +11,7 @@ PJPerktoe <- 0.041868
 library(tidyverse)
 CountriesSelected=c("China","India","United States","Russia","South Africa","Brazil")
 
-RFF <- read_csv("comparison/7RFF/RFF.csv")
+RFF <- read_csv("5-comparison/7RFF/RFF.csv")
 
 #tidyverse: functions that work together e.g. with the pipe and tidy data
 #Tibble, a form of data frame (which are R  tables).
@@ -44,7 +44,7 @@ select(Provider,ScenarioYear,Subscenario,ScenarioYear,Country,CarbonTax,Year,Pow
 
 #View(RFF.selected)
 
-LongFormResults <- read_csv("comparison/2ResultsFromCPAT/LongFormResults.csv") %>%
+LongFormResults <- read_csv("5-comparison/2ResultsFromCPAT/LongFormResults.csv") %>%
   pivot_longer(cols=7:23, names_to = "Year", values_to = "value") %>%
   filter(Quantity=="Power Supplied ktoe" & Model=="Old")
 
@@ -66,13 +66,25 @@ AllResults=bind_rows(LongFormResults,RFF.selected) %>%
   filter((Year > 2017) & (Year < 2030 )) %>%
   filter(PowerCons.TWh > 1) %>%
   mutate(Subscenario=if_else(Subscenario=="Old","Reference",Subscenario)) %>%
-  mutate(ProviderYear=paste(Provider,ScenarioYear,sep="-"))
+  mutate(ProviderYear=paste(Provider,ScenarioYear,sep="-")) %>%
+  mutate(ScenarioYearSubScenario=paste(ScenarioYear,Subscenario,sep="-")) %>%
+  mutate(ProviderScenarioYearSubScenario=paste(Provider,ScenarioYear,Subscenario,sep="-")) %>%
+  mutate(ProviderSubScenario=paste(Provider,Subscenario,sep="-")) %>%
+  mutate(TypeOfModel=if_else(Provider=="CPAT-Excel","CPAT Excel","External Model"))
 
 
 ggplot(data=AllResults) +
   geom_point(mapping = aes(x=Year,y=PowerCons.TWh,color=ProviderYear,fill=Subscenario,shape=ScenarioYear), show.legend = TRUE) +
   facet_wrap(~Country,scales="free_y")
 
+results2020 = AllResults %>% filter(Year==2020L)
+
 ggplot(data=AllResults) +
-  geom_point(mapping = aes(x=Year,y=PowerCons.TWh,color=Provider,fill=ScenarioYear,label=,shape=Subscenario), show.legend = TRUE) +
-  facet_wrap(~Country,scales="free_y")
+  geom_point(mapping = aes(x=Year,y=PowerCons.TWh,color=ProviderSubScenario,shape=TypeOfModel), show.legend = TRUE) +
+  facet_wrap(~Country,scales="free_y") +
+  geom_line(mapping = aes(x=Year,y=PowerCons.TWh,group=ProviderScenarioYearSubScenario))
+
+
+#ggplot(data=filter(AllResults,Country=="China")) +
+#  geom_point(mapping = aes(x=Year,y=PowerCons.TWh,color=ProviderSubScenario,shape=ScenarioYear), show.legend = TRUE) +
+#  geom_line(mapping = aes(x=Year,y=PowerCons.TWh,group=ProviderScenarioYearSubScenario))

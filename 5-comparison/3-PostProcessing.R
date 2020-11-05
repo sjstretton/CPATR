@@ -1,17 +1,19 @@
 rm(list=ls())
-load(file="output/MainDataFile.rda")
+load(file="4-output/MainDataFile.rda")
 CountryCategoryList <- as_factor(c("VeryLarge","Large","MediumLarge","Medium","MediumSmall","Small","VerySmall"))
-CountriesTable <- read_csv("metadata/CountryLookup.csv")
+CountriesTable <- read_csv("1-metadata/CountryLookup.csv")
 PJPerktoe <- 0.041868
 BaseYear <- 2018L
 AnalysisEndYear <- 2030L
 BaselineEmissionsTable <-
-  CombinedAll %>%
+  MainSegmentedDataTable %>%
   filter(CTScenarioRate==0) %>%
   rename(BaselineEmissions=Emissions) %>%
   select(CountryCode, Sector, SubsectorCode, FuelType, Model,Year,BaselineEmissions)
 
-CombinedAll %<>% left_join(BaselineEmissionsTable) %>% mutate(EmissionsReduction=BaselineEmissions-Emissions)
+PowerResults <- SelectedPowerDataByGenType
+
+MainSegmentedDataTable %<>% left_join(BaselineEmissionsTable) %>% mutate(EmissionsReduction=BaselineEmissions-Emissions)
 
 CountryCategoryTable <- BaselineEmissionsTable %>%
   filter(Year==AnalysisEndYear) %>%
@@ -30,17 +32,17 @@ CountryCategoryTable <- BaselineEmissionsTable %>%
   inner_join(CountriesTable) %>%
   select(CountryCode,CountryName,CountryCategory,BaselineEmissionsBaseYear)
 
-CombinedAll <- left_join(select(CountryCategoryTable,CountryCode,CountryName,CountryCategory), CombinedAll)
+MainSegmentedDataTable <- left_join(select(CountryCategoryTable,CountryCode,CountryName,CountryCategory), MainSegmentedDataTable)
 
-CombinedAll %<>% mutate(EnergyConsumption.ktoe= EnergyConsumption/PJPerktoe)
+MainSegmentedDataTable %<>% mutate(EnergyConsumption.ktoe= EnergyConsumption/PJPerktoe)
 
 
 
-CO2ByCountry <- read_csv("preprocess/rawdata/CO2ByCountry.csv",col_types = "cccddd") %>% filter(Year==BaseYear) %>% select(-Year) %>%
+CO2ByCountry <- read_csv("2-preprocess/rawdata/CO2ByCountry.csv",col_types = "cccddd") %>% filter(Year==BaseYear) %>% select(-Year) %>%
   rename(CO2owid2017= CO2Emissions)
 
 
-SummaryResults.Baseline.ByCountry <- CombinedAll %>%
+SummaryResults.Baseline.ByCountry <- MainSegmentedDataTable %>%
   filter(CTScenarioRate==0)  %>%
   group_by(Scenario,CountryCode,Year) %>%
   summarise(BaselineEmissions=sum(BaselineEmissions,na.rm=TRUE),Emissions=sum(Emissions,na.rm=TRUE),EmissionsReduction=sum(EmissionsReduction,na.rm=TRUE)) %>%
@@ -54,7 +56,7 @@ CO2Compared = SummaryResults.Baseline.ByCountry %>%
   inner_join(CO2ByCountry) %>%
   select("CountryCode","CountryName","CO2owid2017", as.character(BaseYear), as.character(2030))
 
-SummaryResults.ByCountry.2030 <- CombinedAll %>%
+SummaryResults.ByCountry.2030 <- MainSegmentedDataTable %>%
   filter(Year=="2030")  %>%
   group_by(Scenario,CTScenarioRate,CountryCode) %>%
   summarise(BaselineEmissions=sum(BaselineEmissions,na.rm=TRUE),Emissions=sum(Emissions,na.rm=TRUE),EmissionsReduction=sum(EmissionsReduction,na.rm=TRUE)) %>%
@@ -62,14 +64,14 @@ SummaryResults.ByCountry.2030 <- CombinedAll %>%
   select(Scenario,  CTScenarioRate, CountryCategory, CountryCode, CountryName, BaselineEmissions, Emissions, EmissionsReduction) %>%
   arrange(CountryCategory, CountryCode,Scenario, CTScenarioRate )
 
-SummaryResults.BySector.2030 <- CombinedAll %>%
+SummaryResults.BySector.2030 <- MainSegmentedDataTable %>%
   filter(Year%in%c("2030"))  %>%
   inner_join(CountryCategoryTable) %>%
   group_by(Scenario,CTScenarioRate,CountryCategory,CountryCode,CountryName,Sector) %>%
   summarise(BaselineEmissions=sum(BaselineEmissions,na.rm=TRUE), Emissions=sum(Emissions,na.rm=TRUE),EmissionsReduction=sum(EmissionsReduction,na.rm=TRUE)) %>%
   arrange(CountryCategory, CountryCode, Scenario, CTScenarioRate, Sector  )
 
-SelectedCountry2025and2030 <- CombinedAll %>%
+SelectedCountry2025and2030 <- MainSegmentedDataTable %>%
   filter(Year%in%c("2025","2030")& CountryCode=="CHN")  %>%
   group_by(Scenario,CTScenarioRate,CountryCode,Year) %>%
   summarise(BaselineEmissions=sum(BaselineEmissions,na.rm=TRUE),Emissions=sum(Emissions,na.rm=TRUE),EmissionsReduction=sum(EmissionsReduction,na.rm=TRUE)) %>%

@@ -19,9 +19,6 @@ SimpleCountryCodeCountryLookup <-CountriesTable %>% select(CountryCode, CountryN
 ##############
 
 
-#5C-FillInLCOEAssumptions.R
-
-
 SectoralPowerDemand= read_csv("powerintermediate/SectoralPowerDemand.csv")
 
 TotalPowerDemand = SectoralPowerDemand %>% ungroup() %>%
@@ -214,12 +211,9 @@ AllPowerData <- Capacity %>% left_join(PrimaryEnergyInputToPower) %>%
 
 
 AllPowerData.Selected = AllPowerData %>% mutate(Year=2018,Country.FuelCode=paste(tolower(CountryCode),FuelType,sep=".")) %>%
-  select(Country.FuelCode,CountryCode, FuelType, Year, PrimaryEnergyInputToPower.ktoe,PowerOutput.GWh,
-                                                Capacity.MW, PowerOutput.MWy,PrimaryEnergyInputToPower.MWy,
-                                                CapacityFactor,ThermalEfficiency,AvailabilityFactor,
-                                                LCOE.TotalCalc.USD_kWh,LCOE.Var.USD_kWh, VarOpex.USD_kWh, LCOE.Fixed.USD_kWh,
-                                                CapEx.USD_kW
-                                                )
+  select(Country.FuelCode,CountryCode, FuelType, Year, PrimaryEnergyInputToPower.ktoe,PowerOutput.GWh,PrimaryEnergyInputToPower.MWy,
+         PowerOutput.MWy, Capacity.MW,CapacityFactor,ThermalEfficiency,AvailabilityFactor,
+         LCOE.TotalCalc.USD_kWh,LCOE.Var.USD_kWh, VarOpex.USD_kWh, LCOE.Fixed.USD_kWh, CapEx.USD_kW)
 write_csv(AllPowerData.Selected,file="output/SelectedPowerData.csv")
 
 AllPowerData.Selected.China = AllPowerData.Selected %>% filter(CountryCode=="CHN")
