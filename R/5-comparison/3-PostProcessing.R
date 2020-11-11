@@ -1,7 +1,7 @@
 rm(list=ls())
-load(file="4-output/MainDataFile.rda")
+load(file="data/MainDataFile.rda")
 CountryCategoryList <- as_factor(c("VeryLarge","Large","MediumLarge","Medium","MediumSmall","Small","VerySmall"))
-CountriesTable <- read_csv("1-metadata/CountryLookup.csv")
+CountriesTable <- read_csv("R/1-metadata/CountryLookup.csv")
 PJPerktoe <- 0.041868
 BaseYear <- 2018L
 AnalysisEndYear <- 2030L
@@ -38,7 +38,7 @@ MainSegmentedDataTable %<>% mutate(EnergyConsumption.ktoe= EnergyConsumption/PJP
 
 
 
-CO2ByCountry <- read_csv("2-preprocess/rawdata/CO2ByCountry.csv",col_types = "cccddd") %>% filter(Year==BaseYear) %>% select(-Year) %>%
+CO2ByCountry <- read_csv("R/2-preprocess/rawdata/CO2ByCountry.csv",col_types = "cccddd") %>% filter(Year==BaseYear) %>% select(-Year) %>%
   rename(CO2owid2017= CO2Emissions)
 
 

@@ -1,4 +1,4 @@
 library(testthat)
-library(CPAT-R)
+#library(CPATR)
 
-test_check("CPAT-R")
+#test_check("CPAT-R")

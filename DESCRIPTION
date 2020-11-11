@@ -1,0 +1,28 @@
+Package: CPATR
+Title: Carbon Pricing Assessment Tool, R Version
+Version: 0.0.0.1
+Authors@R: 
+    person(given = "Stephen",
+           family = "Stretton",
+           role = c("aut", "cre"),
+           email = "sjstretton@gmail.com",
+           comment = c(ORCID = "https://orcid.org/0000-0002-0034-7149"))
+Description: This package simulates energy and emissions for countries using the World Bank prototype Carbon Pricing Assessment Tool (CPAT). The model is split into separate stages: preprocessing, model and postprocessing, which involves comparison with the Excel form of model and with other Outlook and Integrated Assessment models. These three components can function independently. Preprocessing is not required to run the model. Running the model is not required for comparison routines.
+Depends: R (>= 3.5.0)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+  shiny,
+  readxl,
+  magrittr,
+  cowplot,
+  ggrepel,
+  ggplot2,
+  tibble,  
+  tidyr,   
+  purrr,   
+  dplyr,
+  testthat

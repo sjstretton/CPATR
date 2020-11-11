@@ -71,7 +71,7 @@ sectoralemissionsfaceted = ggplot(SummaryResults.BySector.2030.selected, aes(fil
 
 
 print(sectoralemissionsfaceted)
-#cowplot::save_plot(plot=sectoralemissionsfaceted,filename="output/SectoralEmissionsReductionByCountryFaceted.png",base_height=7)
+#cowplot::save_plot(plot=sectoralemissionsfaceted,filename="R/4-output/SectoralEmissionsReductionByCountryFaceted.png",base_height=7)
 
 
 #######################
