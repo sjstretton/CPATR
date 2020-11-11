@@ -1,6 +1,6 @@
 Package: CPATR
 Title: Carbon Pricing Assessment Tool, R Version
-Version: 0.0.0.1
+Version: 0.0.0.4
 Authors@R: 
     person(given = "Stephen",
            family = "Stretton",

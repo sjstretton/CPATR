@@ -1,8 +1,0 @@
-﻿EnergyType,EnergyUnit,GJperunit,FuelType
-Biomass,MMBtu,1.055055853,bio
-Biomass,Tonne,11,bio
-Coal,Tonne,18,coa
-Gas,MMBtu,1.055055853,gas
-NoCarbon,,1,nuc
-NoFuel,,1,ren
-Carbon,Tonne,1,ets

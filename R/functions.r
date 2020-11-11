@@ -7,11 +7,8 @@ Sys.setenv(TZ='GMT')
 #' @param CountryList_ List of Countries
 #'
 #' @return tibble
-#' @export
 #' @examples
-#' BuildBaseTable(CountryList,SubsectorList,FuelList,YearList,CTRange,BaseYear,SectorSubsectorLookup,PowerFuelTypes)
-
-
+#' @export
 BuildBaseTable = function(CountryList_,SubsectorList_,FuelList_,YearList_,CTRange_,BaseYear_,SectorSubsectorLookup_,PowerFuelTypes_) {
   PowerBase <- expand_grid(CountryCode=CountryList_,SubsectorCode="pow",
                            FuelType=PowerFuelTypes_,Year=YearList_,Scenario="CarbonTax",CTScenarioRate=CTRange_) #For power sector model
@@ -28,7 +25,15 @@ BuildBaseTable = function(CountryList_,SubsectorList_,FuelList_,YearList_,CTRang
 }
 
 
-
+#' BuildMainSegmentedDataTable
+#'
+#' Create the MainSegmentedDataTable
+#'
+#' @param CountryList_ List of Countries
+#'
+#' @return tibble
+#' @examples
+#' @export
 BuildMainSegmentedDataTable= function(Base_, Elasticities_,Fuels_,CPATEnergyBalancesBaseYear_,GDPRelativeToBase_,FuelPrices_,CarbonTaxTrajectoryForm_) {
   MainSegmentedDataTable <- Base_ %>%
     left_join(Elasticities_) %>%
@@ -46,7 +51,11 @@ BuildMainSegmentedDataTable= function(Base_, Elasticities_,Fuels_,CPATEnergyBala
 }
 
 
-
+#' UpdateCoreData
+#'
+#' Update Core Data
+#'
+#' @export
 UpdateCoreData = function(MainSegmentedDataTableStyleInput,CTMaxRate=CTMaxRate) {
   MainSegmentedDataTableStyleInput <- MainSegmentedDataTableStyleInput %>%
     mutate(Model="R",
@@ -67,7 +76,11 @@ UpdateCoreData = function(MainSegmentedDataTableStyleInput,CTMaxRate=CTMaxRate) 
 }
 
 
-
+#' RunCoreModel
+#'
+#' Run Core Model
+#'
+#' @export
 RunCoreModel = function(MainSegmentedDataTable_,MainPowerLargeDataTable_,BaseYear_,AnalysisEndYear_,CTRange_=CTRange,
                         DoPower_=DoPower,NumberOfYears_=NumberOfYears,RetirementProportion_=RetirementProportion) {
   for (CTMaxRate in CTRange_)  {
@@ -86,7 +99,11 @@ RunCoreModel = function(MainSegmentedDataTable_,MainPowerLargeDataTable_,BaseYea
 }
 
 
-#################################################################
+#' ApplyPowerModelToSpecificYear
+#'
+#' ApplyPowerModelToSpecificYear
+#'
+#' @export
 ApplyPowerModelToSpecificYear=  function(CurrentYearTemp,CTMaxRate=0,
                                          MainPowerDataTable=MainPowerLargeDataTable_,BaseYear__=BaseYear_,
                                          NumberOfYears__=NumberOfYears_,RetirementProportion__=RetirementProportion_
@@ -187,6 +204,11 @@ ApplyPowerModelToSpecificYear=  function(CurrentYearTemp,CTMaxRate=0,
   MainPowerDataTable
 }
 
+#' OverallCoremodel
+#'
+#' Run OverallCoremodel
+#'
+#' @export
 OverallCoremodel=function(CountryList=gCountryList,DoPower=gDoPower,
                    BaseYear=gBaseYear,NumberOfYears=gNumberOfYears,
                    AnalysisEndYear=gAnalysisEndYear, EndYear=gEndYear,
@@ -292,12 +314,12 @@ OverallCoremodel=function(CountryList=gCountryList,DoPower=gDoPower,
 ###########
 
 
+
+#' ConvertTibbleWithIDCols
+#'
+#' ConvertTibbleWithIDCols
+#'
 #' @export
-runShinyApp <- function() {
-
-
-  shiny::runApp("app.R", display.mode = "normal")
-}
 
 ConvertTibbleWithIDCols = function(tb, idcols=1L, conversion=1) {
   ColsToConvert=setdiff((1:ncol(tb)),idcols)
@@ -308,22 +330,27 @@ ConvertTibbleWithIDCols = function(tb, idcols=1L, conversion=1) {
 
 
 
-#Found one side!
-#PJPerktoe <- 0.041868
+#' FindFilterdValueCPAT
+#'
+#' FindFilterdValueCPAT
+#'
+#' @export
 FindFilterdValueCPAT = function () {
   FilteredInfo1  = MST1.new %>% filter(QuantityCodeMain=="ener" & SubsectorCode=="res" & FuelCode=="coa"& SubscenarioNumber==1L)
   ExpectedValue1 = FilteredInfo1 %>% select(`2018`) %>% deframe
   ExpectedValue1 }
 
+
+#' FindFilterdValueR
+#'
+#' FindFilterdValueR
+#'
+#' @export
 FindFilterdValueR   = function () {
   FilteredInfo2 = MainSegmentedDataTable%>% filter(CountryCode=="CHN" & SubsectorCode=="res" & FuelType=="coa"& CTScenarioRate==0)
   ExpectedValue2 = FilteredInfo2%>% filter(Year =="2018") %>% select(EnergyConsumption)/PJPerktoe
   ExpectedValue2 %<>% pull("EnergyConsumption")
   ExpectedValue2
 }
-
-#WideForm2.ktoe = FilteredInfo2 %>% select("CountryCode","Sector","SubsectorCode", "FuelType","Scenario","Model","CTScenarioRate","Time","EnergyConsumption","Year") %>%
-#pivot_wider(id_cols=c("CountryCode","Sector","SubsectorCode","FuelType","Scenario","Model","CTScenarioRate"), values_from="EnergyConsumption",names_from="Year") %>%
-#ConvertTibbleWithIDCols(idcols=1:7, conversion=1/PJPerktoe)
 
 
