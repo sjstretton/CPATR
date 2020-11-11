@@ -17,6 +17,20 @@ BuildBaseTable(
 }
 \arguments{
 \item{CountryList_}{List of Countries}
+
+\item{SubsectorList_}{Parameter}
+
+\item{FuelList_}{Parameter}
+
+\item{YearList_}{Parameter}
+
+\item{CTRange_}{Parameter}
+
+\item{BaseYear_}{Parameter}
+
+\item{SectorSubsectorLookup_}{Parameter}
+
+\item{PowerFuelTypes_}{Parameter}
 }
 \value{
 tibble

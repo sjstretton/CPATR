@@ -6,6 +6,13 @@
 \usage{
 ConvertTibbleWithIDCols(tb, idcols = 1L, conversion = 1)
 }
+\arguments{
+\item{tb}{Parameter}
+
+\item{idcols}{Parameter}
+
+\item{conversion}{Parameter}
+}
 \description{
 ConvertTibbleWithIDCols
 }

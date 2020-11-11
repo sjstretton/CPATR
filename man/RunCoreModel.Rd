@@ -15,6 +15,23 @@ RunCoreModel(
   RetirementProportion_ = RetirementProportion
 )
 }
+\arguments{
+\item{MainSegmentedDataTable_}{Parameter}
+
+\item{MainPowerLargeDataTable_}{Parameter}
+
+\item{BaseYear_}{Parameter}
+
+\item{AnalysisEndYear_}{Parameter}
+
+\item{CTRange_}{CTRange}
+
+\item{DoPower_}{DoPower}
+
+\item{NumberOfYears_}{NumberOfYears}
+
+\item{RetirementProportion_}{RetirementProportion}
+}
 \description{
 Run Core Model
 }

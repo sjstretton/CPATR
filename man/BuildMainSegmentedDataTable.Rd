@@ -15,7 +15,19 @@ BuildMainSegmentedDataTable(
 )
 }
 \arguments{
-\item{CountryList_}{List of Countries}
+\item{Base_}{Parameter}
+
+\item{Elasticities_}{Parameter}
+
+\item{Fuels_}{Parameter}
+
+\item{CPATEnergyBalancesBaseYear_}{Parameter}
+
+\item{GDPRelativeToBase_}{Parameter}
+
+\item{FuelPrices_}{Parameter}
+
+\item{CarbonTaxTrajectoryForm_}{Parameter}
 }
 \value{
 tibble

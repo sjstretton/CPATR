@@ -6,6 +6,11 @@
 \usage{
 UpdateCoreData(MainSegmentedDataTableStyleInput, CTMaxRate = CTMaxRate)
 }
+\arguments{
+\item{MainSegmentedDataTableStyleInput}{Parameter}
+
+\item{CTMaxRate}{Parameter}
+}
 \description{
 Update Core Data
 }

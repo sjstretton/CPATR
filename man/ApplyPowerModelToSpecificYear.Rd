@@ -13,6 +13,19 @@ ApplyPowerModelToSpecificYear(
   RetirementProportion__ = RetirementProportion_
 )
 }
+\arguments{
+\item{CurrentYearTemp}{Parameter}
+
+\item{CTMaxRate}{Parameter}
+
+\item{MainPowerDataTable}{MainPowerLargeDataTable_}
+
+\item{BaseYear__}{BaseYear_}
+
+\item{NumberOfYears__}{NumberOfYears_}
+
+\item{RetirementProportion__}{RetirementProportion_}
+}
 \description{
 ApplyPowerModelToSpecificYear
 }

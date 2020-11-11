@@ -5,9 +5,15 @@ Sys.setenv(TZ='GMT')
 #' Create the base table.
 #'
 #' @param CountryList_ List of Countries
-#'
+#' @param SubsectorList_ Parameter
+#' @param FuelList_ Parameter
+#' @param YearList_ Parameter
+#' @param CTRange_ Parameter
+#' @param BaseYear_ Parameter
+#' @param SectorSubsectorLookup_ Parameter
+#' @param PowerFuelTypes_ Parameter
 #' @return tibble
-#' @examples
+
 #' @export
 BuildBaseTable = function(CountryList_,SubsectorList_,FuelList_,YearList_,CTRange_,BaseYear_,SectorSubsectorLookup_,PowerFuelTypes_) {
   PowerBase <- expand_grid(CountryCode=CountryList_,SubsectorCode="pow",
@@ -29,10 +35,15 @@ BuildBaseTable = function(CountryList_,SubsectorList_,FuelList_,YearList_,CTRang
 #'
 #' Create the MainSegmentedDataTable
 #'
-#' @param CountryList_ List of Countries
-#'
+#' @param Base_ Parameter
+#' @param Elasticities_ Parameter
+#' @param Fuels_ Parameter
+#' @param CPATEnergyBalancesBaseYear_ Parameter
+#' @param GDPRelativeToBase_ Parameter
+#' @param FuelPrices_ Parameter
+#' @param CarbonTaxTrajectoryForm_ Parameter
 #' @return tibble
-#' @examples
+
 #' @export
 BuildMainSegmentedDataTable= function(Base_, Elasticities_,Fuels_,CPATEnergyBalancesBaseYear_,GDPRelativeToBase_,FuelPrices_,CarbonTaxTrajectoryForm_) {
   MainSegmentedDataTable <- Base_ %>%
@@ -54,7 +65,8 @@ BuildMainSegmentedDataTable= function(Base_, Elasticities_,Fuels_,CPATEnergyBala
 #' UpdateCoreData
 #'
 #' Update Core Data
-#'
+#' @param MainSegmentedDataTableStyleInput Parameter
+#' @param CTMaxRate Parameter
 #' @export
 UpdateCoreData = function(MainSegmentedDataTableStyleInput,CTMaxRate=CTMaxRate) {
   MainSegmentedDataTableStyleInput <- MainSegmentedDataTableStyleInput %>%
@@ -75,10 +87,18 @@ UpdateCoreData = function(MainSegmentedDataTableStyleInput,CTMaxRate=CTMaxRate) 
   return(MainSegmentedDataTableStyleInput)
 }
 
-
 #' RunCoreModel
 #'
 #' Run Core Model
+#'
+#' @param MainSegmentedDataTable_ Parameter
+#' @param MainPowerLargeDataTable_ Parameter
+#' @param BaseYear_ Parameter
+#' @param AnalysisEndYear_ Parameter
+#' @param CTRange_ CTRange
+#' @param DoPower_ DoPower
+#' @param NumberOfYears_ NumberOfYears
+#' @param RetirementProportion_ RetirementProportion
 #'
 #' @export
 RunCoreModel = function(MainSegmentedDataTable_,MainPowerLargeDataTable_,BaseYear_,AnalysisEndYear_,CTRange_=CTRange,
@@ -102,7 +122,12 @@ RunCoreModel = function(MainSegmentedDataTable_,MainPowerLargeDataTable_,BaseYea
 #' ApplyPowerModelToSpecificYear
 #'
 #' ApplyPowerModelToSpecificYear
-#'
+#' @param CurrentYearTemp Parameter
+#' @param CTMaxRate Parameter
+#' @param MainPowerDataTable MainPowerLargeDataTable_
+#' @param BaseYear__ BaseYear_
+#' @param NumberOfYears__ NumberOfYears_
+#' @param RetirementProportion__ RetirementProportion_
 #' @export
 ApplyPowerModelToSpecificYear=  function(CurrentYearTemp,CTMaxRate=0,
                                          MainPowerDataTable=MainPowerLargeDataTable_,BaseYear__=BaseYear_,
@@ -208,6 +233,15 @@ ApplyPowerModelToSpecificYear=  function(CurrentYearTemp,CTMaxRate=0,
 #'
 #' Run OverallCoremodel
 #'
+#' @param CountryList gCountryList
+#' @param DoPower gDoPower
+#' @param BaseYear gBaseYear
+#' @param NumberOfYears gNumberOfYears
+#' @param AnalysisEndYear gAnalysisEndYear
+#' @param EndYear gEndYear
+#' @param RetirementProportion gRetirementProportion
+#' @param CarbonTaxTrajectoryForm gCarbonTaxTrajectoryForm
+#' @param CTRange gCTRange
 #' @export
 OverallCoremodel=function(CountryList=gCountryList,DoPower=gDoPower,
                    BaseYear=gBaseYear,NumberOfYears=gNumberOfYears,
@@ -320,7 +354,9 @@ OverallCoremodel=function(CountryList=gCountryList,DoPower=gDoPower,
 #' ConvertTibbleWithIDCols
 #'
 #' @export
-
+#' @param tb Parameter
+#' @param idcols Parameter
+#' @param conversion Parameter
 ConvertTibbleWithIDCols = function(tb, idcols=1L, conversion=1) {
   ColsToConvert=setdiff((1:ncol(tb)),idcols)
   tb[,ColsToConvert]=tb[,ColsToConvert]*conversion

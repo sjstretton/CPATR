@@ -16,6 +16,25 @@ OverallCoremodel(
   CTRange = gCTRange
 )
 }
+\arguments{
+\item{CountryList}{gCountryList}
+
+\item{DoPower}{gDoPower}
+
+\item{BaseYear}{gBaseYear}
+
+\item{NumberOfYears}{gNumberOfYears}
+
+\item{AnalysisEndYear}{gAnalysisEndYear}
+
+\item{EndYear}{gEndYear}
+
+\item{RetirementProportion}{gRetirementProportion}
+
+\item{CarbonTaxTrajectoryForm}{gCarbonTaxTrajectoryForm}
+
+\item{CTRange}{gCTRange}
+}
 \description{
 Run OverallCoremodel
 }
